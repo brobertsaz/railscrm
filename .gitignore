@@ -1,0 +1,9 @@
+.bundle
+config/provider_keys.yml
+db/*.sqlite3
+log/*.log
+tmp/
+.sass-cache/
+*.swp
+.DS_Store
+coverage/

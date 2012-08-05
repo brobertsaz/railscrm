@@ -1,0 +1,4 @@
+The \"#{@task["task_type"]}\" task: \"#{@task["task_name"]}\" you were assigned to on MongoCRM has been updated.
+
+Click here to view it:
+= link_to 'Click here to view task', Rails.public_path+task_path(@task.id)

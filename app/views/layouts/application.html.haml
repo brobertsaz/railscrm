@@ -1,0 +1,47 @@
+!!! 5
+%html
+  %head
+    %title RebelFoundation CRM
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    %section.container-liquid
+      .navigation.navbar
+        .nav-collapse
+          %ul.pull-left
+            %li
+              = link_to 'Rebelhold CRM', root_path, class: 'brand'
+          %ul.pull-right
+            - if @current_user
+              %li
+                = link_to 'Dashboard', :dashboard
+              %li
+                = link_to 'Leads', :leads
+              %li
+                = link_to 'Tasks', :tasks
+              / %li
+              /   = link_to 'Accounts'
+              %li
+                = link_to 'Contacts', :contacts
+              / %li
+              /   = link_to 'Opportunities'
+              %li
+                = link_to 'Logout', [:logout]
+            - else
+              %li
+                = link_to 'Login', [:login]
+              %li
+                = link_to 'Register', [:new, :user]
+
+    - if flash.present?
+      %section.container-liquid
+        - flash.each do |name, msg|
+          %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
+            / %a.close{"data-dismiss" => "alert"} &#215;
+            = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) 
+
+    .span3#sidebar
+      = yield :sidebar
+    .span9#content
+      = yield

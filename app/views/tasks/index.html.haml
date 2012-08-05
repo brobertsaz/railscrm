@@ -1,0 +1,38 @@
+- content_for :sidebar do
+  .well
+    sidebar stuff
+
+.well
+  .functions.pull-right
+    = link_to 'Create Task', new_task_path
+
+  %table.table.table-striped
+    %thead
+      %tr
+        %th
+          Task Name
+        %th
+          Due Date
+        %th
+          Assigned To
+        %th
+          Task Type
+        %th
+          Name of Lead
+        %th
+          Actions
+    %tbody
+      - @tasks.each do |task|
+        %tr
+          %td
+            = link_to task.task_name, task_path(task)
+          %td
+            = task.due_date.to_s.capitalize
+          %td
+            = task.assigned_to
+          %td
+            = task.task_type.to_s.capitalize
+          %td
+            = task.lead_for_task
+          %td
+            = link_to 'Delete', task_path(task), method: 'delete', class: 'btn btn-danger', confirm: 'Are you sure that you want to delete this task?'

@@ -1,0 +1,19 @@
+.form.well
+  .label
+    %h2
+      New User Registration
+  %h3
+    Please enter your organization name.
+  %br
+  = form_for @user do |f|
+    %p
+      = f.label 'Name:'
+      = @user.name
+    %p
+      = f.label 'Email:'
+      = @user.email
+    %p
+      = f.label 'Organization'
+      = f.text_field :company
+    %p
+      = f.submit class: 'btn'

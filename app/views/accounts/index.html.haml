@@ -1,0 +1,38 @@
+- content_for :sidebar do
+  .well
+    sidebar stuff
+
+.well
+  .functions.pull-right
+    = link_to 'Create Account', new_account_path
+
+  %table.table.table-striped
+    %thead
+      %tr
+        %th
+          Account Name
+        %th
+          Assigned To
+        %th
+          Phone
+        %th
+          Website
+        %th
+          Email
+        %th
+          Address
+    %tbody
+      - @accounts.each do |account|
+        %tr
+          %td
+            = link_to account.name, account_path(account)
+          %td
+            = account.assigned_to.to_s
+          %td
+            = account.phone
+          %td
+            = account.website
+          %td
+            = account.email
+          %td
+            = link_to 'Delete', account_path(account), method: 'delete', class: 'btn btn-danger', data: {confirm: 'Are you sure that you want to delete this account?'}

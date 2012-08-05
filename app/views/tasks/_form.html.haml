@@ -1,0 +1,21 @@
+=form_for @task do |f|
+  .span6
+    %p
+      = f.label 'Task Name'
+
+      = f.text_field :task_name
+  .span3
+    %p
+      = f.label 'Due Date'
+      = f.select :due_date, options_for_select(@task_due_dates, @task.due_date), include_blank: false
+    %p
+      = f.label 'Assign To'
+      = f.select :assigned_to, options_for_select(User.all.map(&:first_name).prepend('None')), include_blank: false
+  .span3
+    %p
+      = f.label 'Task Type'
+      = f.select :task_type, options_for_select(@task_types, @task.task_type), include_blank: false
+    %p
+      = f.label 'Assign To Lead'
+      = f.select :lead_for_task, options_for_select(Lead.all.map(&:full_name)), include_blank: true
+      = f.submit 'Update task', class: 'btn'

@@ -1,0 +1,42 @@
+= form_for @lead do |f|
+  .span3
+    %p
+      = f.label 'First name'
+      = f.text_field :first_name
+    %p
+      = f.label 'Phone'
+      = f.text_field :phone
+    %p
+      = f.label 'Company'
+      = f.text_field :company
+    %p
+      = f.label 'Comments'
+      = f.text_area :comments
+  .span3
+    %p
+      = f.label 'Last name'
+      = f.text_field :last_name
+    %p
+      = f.label 'Email'
+      = f.text_field :email
+    %p
+      = label_tag 'Assigned to'
+      = f.select :assigned_to_id, options_for_select(User.all.map(&:first_name).prepend('None'), @lead.assigned_to_id), include_blank: true
+    %p
+      = label_tag 'Interested in?'
+      = f.select :interested_in, options_for_select(@lead_interests, @lead.interested_in)
+    %p
+      = label_tag 'Status'
+      = f.select :lead_status, options_for_select(@lead_status, @lead.lead_status)
+    %p
+      = label_tag 'Source'
+      = f.select :lead_source, options_for_select(@lead_sources, @lead.lead_source)
+    %p
+      = f.submit class: 'btn'
+  = f.fields_for :notes do |note_form|
+    = note_form.label :content, "Add note for #{@lead.first_name}"
+    = note_form.text_area :content, rows: 5, class: 'span6'
+    = note_form.submit 'Add Note', class: 'btn'
+  - @lead.notes.each do |note|
+    %p= note.content
+

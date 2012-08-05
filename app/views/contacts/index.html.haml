@@ -1,0 +1,41 @@
+- content_for :sidebar do
+  .well
+    sidebar stuff
+
+.well
+  .functions.pull-right
+    = link_to 'Create Contact', new_contact_path
+  
+  %table.table.table-striped
+    %thead
+      %tr
+        %th
+          First
+        %th
+          Last
+        %th
+          Company
+        %th
+          E-mail
+        %th
+          Phone
+        %th
+          Address
+
+    %tbody
+      - @contact.each do |f|
+        %tr
+          %td
+            = link_to f.first_name, contact_path(f)
+          %td
+            = f.last_name
+          %td
+            = f.company
+          %td
+            =f.email
+          %td
+            =f.phone
+          %td
+            =f.address
+          %td
+            = link_to 'Delete', contact_path(f), method: 'delete', class: 'btn btn-danger', data: {confirm: 'Are you sure that you want to delete this contact?'}

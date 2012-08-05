@@ -1,0 +1,16 @@
+.well
+  .form.user-forms
+    = form_tag '/auth/identity/register' do
+      = label_tag :name
+      = text_field_tag :name, @identity.try(:name)
+    
+      = label_tag :email
+      = text_field_tag :email, @identity.try(:email)
+    
+      = label_tag :password
+      = password_field_tag :password
+    
+      = label_tag :password_confirmation
+      = password_field_tag :password_confirmation
+    
+      = submit_tag 'Create User', class: 'btn'
