@@ -1,24 +1,12 @@
-= form_for @contact do |f|
-  .span3
-    %p
-      = f.label 'First name'
-      = f.text_field :first_name
-    %p
-      = f.label 'Company'
-      = f.text_field :company
-    %p
-      = f.label 'Phone'
-      = f.text_field :phone
-  .span3
-    %p
-      = f.label 'Last name'
-      = f.text_field :last_name
-    %p
-      = f.label 'Email'
-      = f.text_field :email
-    %p
-      = f.label 'Address'
-      = f.text_field :address
-    %p
-      = f.submit class: 'btn'
+.form-horizontal
+  .fieldset
+    .legend
+    = simple_form_for @contact, :html => { :class => 'form-horizontal' } do |f|
+      = f.input :first_name
+      = f.input :last_name
+      = f.input :company
+      = f.input :phone
+      = f.input :email
+      = f.input :address
+      = f.submit class: 'btn btn-large'
   

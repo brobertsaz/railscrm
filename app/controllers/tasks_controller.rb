@@ -16,7 +16,7 @@ class TasksController < ApplicationController
     @task = Task.create params[:task]
     if @task.save
       redirect_to tasks_path, flash: { notice: 'New Task Created'}
-      TaskMailer.notify_new_task(User.where(first_name: params[:task][:assigned_to]).first, Task.find(@task.id)).deliver
+      #TaskMailer.notify_new_task(User.where(first_name: params[:task][:assigned_to]).first, Task.find(@task.id)).deliver
     else
       render :new
     end
@@ -34,7 +34,7 @@ class TasksController < ApplicationController
     @task = Task.find params[:id]
     if @task.update_attributes params[:task]
       redirect_to tasks_path, flash: { notice: 'Task Updated'}
-      TaskMailer.notify_updated_task(User.where(first_name: params[:task][:assigned_to]).first, Task.find(@task.id)).deliver
+      #TaskMailer.notify_updated_task(User.where(first_name: params[:task][:assigned_to]).first, Task.find(@task.id)).deliver
     else
       redirect_to task_path, flash: { notice: 'Unable to update task.'}
     end

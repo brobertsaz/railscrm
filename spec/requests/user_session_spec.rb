@@ -16,7 +16,8 @@ describe 'UserSession' do
 
     before do
       visit new_user_path
-      fill_in 'name',                   with: 'Test User'
+      fill_in 'First name',             with: 'Test'
+      fill_in 'Last name',              with: 'User'
       fill_in 'email',                  with: 'test@example.com'
       fill_in 'password',               with: 'password'
       fill_in 'password_confirmation',  with: 'password'
@@ -25,9 +26,9 @@ describe 'UserSession' do
     end
   
     it 'creates' do
-      User.count.should       == 1
-      User.first.name.should  == 'Test User'
-      User.first.email.should == 'test@example.com'
+      User.count.should            == 1
+      User.first.last_name.should  == 'User'
+      User.first.email.should      == 'test@example.com'
     end
   
     it 'sets current_user' do

@@ -22,6 +22,5 @@ class User < Contact
   def self.generate_token
     Digest::SHA256.hexdigest(Time.now.to_s)
   end
-
   
 end

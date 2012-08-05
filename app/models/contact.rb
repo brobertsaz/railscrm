@@ -11,7 +11,8 @@ class Contact
   field :address,     type: String
   
   validates :email, uniqueness: true
-  
+  validates_presence_of :first_name, :last_name, :email
+    
 
   #doing some tacky patchwork to merge user as a subclass to contact [somewhat] seamlessly
   #since users dont have a last_name (but other sub classes do), 

@@ -1,26 +1,14 @@
-=form_for @account do |f|
-  .span6
-    %p
-      = f.label 'Account Name'
-      = f.text_field :name
-  .span3
-    %p
-      = f.label 'email'
-      = f.text_field :email
-    %p
-      = f.label 'Assign To'
-      = f.select :assigned_to, options_for_select(User.all.map(&:first_name).prepend('None')), include_blank: false
-    %p
-      = f.label 'website'
-      = f.text_field :website
-  .span3
-    %p
-      = f.label 'Phone'
-      = f.text_field :phone
-    %p
-      = f.label 'Address'
-      = f.text_field :address
-    %p
-      = f.label 'Assign To Lead'
-      = f.select :assigned_to, options_for_select(Lead.all.map(&:full_name)), include_blank: true
-      = f.submit 'Update account', class: 'btn'
+.form-horizontal
+  .fieldset
+    .legend
+    = simple_form_for @account, :html => { :class => 'form-horizontal' }  do |f|
+      .span4
+        = f.input :name
+        = f.input :email
+        = f.input :assigned_to, collection: (User.all.map(&:first_name).prepend('None'))
+        = f.input :website
+      .span4
+        = f.input :phone
+        = f.input :address
+      .span8
+        = f.submit 'Update account', class: 'btn btn-large'
