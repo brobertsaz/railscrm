@@ -22,11 +22,7 @@ gem 'aws-s3'
 gem 'mongoid-paperclip', require: 'mongoid_paperclip'
 gem 'dynamic_form'
 
-gem 'omniauth', git: 'https://github.com/brobertsaz/omniauth.git'
-gem 'omniauth-facebook'
-gem 'omniauth-twitter'
-gem 'omniauth-google-oauth2'
-gem 'omniauth-identity'
+gem 'devise'
 gem 'bcrypt-ruby'
 
 gem 'stripe'

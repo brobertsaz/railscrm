@@ -13,9 +13,9 @@
             %li
               = link_to 'Rebelhold CRM', root_path, class: 'brand'
           %ul.pull-right
-            - if @current_user
-              %li
-                = link_to 'Dashboard', :dashboard
+            - if user_signed_in?
+              / %li
+              /   = link_to 'Dashboard', :dashboard
               %li
                 = link_to 'Leads', :leads
               %li
@@ -27,12 +27,14 @@
               %li
                 = link_to 'Opportunities'
               %li
-                = link_to 'Logout', [:logout]
+                = link_to 'Edit profile', edit_user_registration_path
+              %li
+                = link_to 'Logout', destroy_user_session_path, method: :delete
             - else
               %li
-                = link_to 'Login', [:login]
+                = link_to 'Login', new_user_session_path
               %li
-                = link_to 'Register', [:new, :user]
+                = link_to 'Register', new_user_registration_path
 
     - if flash.present?
       %section.container-liquid

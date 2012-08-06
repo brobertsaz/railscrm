@@ -1,11 +1,3 @@
-GIT
-  remote: https://github.com/brobertsaz/omniauth.git
-  revision: 03626d85139096ed95873025ab1abb3aa15810d4
-  specs:
-    omniauth (1.1.0)
-      hashie (~> 1.2)
-      rack
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -76,6 +68,11 @@ GEM
     commonjs (0.2.6)
     daemons (1.1.8)
     database_cleaner (0.8.0)
+    devise (2.1.2)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (~> 3.1)
+      warden (~> 1.2.1)
     diff-lcs (1.1.3)
     dynamic_form (1.1.4)
     email_spec (1.2.1)
@@ -92,8 +89,6 @@ GEM
       factory_girl (~> 4.0.0)
       railties (>= 3.0.0)
     fakeweb (1.3.0)
-    faraday (0.8.1)
-      multipart-post (~> 1.1)
     ffi (1.1.4)
     haml (3.1.6)
     haml-rails (0.3.4)
@@ -101,7 +96,6 @@ GEM
       activesupport (~> 3.0)
       haml (~> 3.0)
       railties (~> 3.0)
-    hashie (1.2.0)
     heroku (2.30.2)
       heroku-api (~> 0.3.2)
       launchy (>= 0.3.2)
@@ -113,15 +107,12 @@ GEM
     highline (1.6.13)
     hike (1.2.1)
     hpricot (0.8.6)
-    httpauth (0.1)
     i18n (0.6.0)
     journey (1.0.4)
     jquery-rails (2.0.2)
       railties (>= 3.2.0, < 5.0)
       thor (~> 0.14)
     json (1.7.4)
-    jwt (0.1.5)
-      multi_json (>= 1.0)
     kgio (2.7.4)
     launchy (2.1.1)
       addressable (~> 2.3)
@@ -152,7 +143,6 @@ GEM
       rspec (>= 2.9)
     moped (1.2.0)
     multi_json (1.3.6)
-    multipart-post (1.1.5)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
@@ -162,30 +152,8 @@ GEM
       net-ssh (>= 1.99.1)
     netrc (0.7.5)
     nokogiri (1.5.5)
-    oauth (0.4.6)
-    oauth2 (0.8.0)
-      faraday (~> 0.8)
-      httpauth (~> 0.1)
-      jwt (~> 0.1.4)
-      multi_json (~> 1.0)
-      rack (~> 1.2)
-    omniauth-facebook (1.4.1)
-      omniauth-oauth2 (~> 1.1.0)
-    omniauth-google-oauth2 (0.1.13)
-      omniauth (~> 1.0)
-      omniauth-oauth2
-    omniauth-identity (1.0.0)
-      omniauth (~> 1.0)
-    omniauth-oauth (1.0.1)
-      oauth
-      omniauth (~> 1.0)
-    omniauth-oauth2 (1.1.0)
-      oauth2 (~> 0.8.0)
-      omniauth (~> 1.0)
-    omniauth-twitter (0.0.12)
-      multi_json (~> 1.3)
-      omniauth-oauth (~> 1.0)
     origin (1.0.4)
+    orm_adapter (0.4.0)
     paperclip (3.1.4)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
@@ -306,6 +274,8 @@ GEM
       rack
       raindrops (~> 0.7)
     vcr (2.2.4)
+    warden (1.2.1)
+      rack (>= 1.0)
     xml-simple (1.1.1)
     xpath (0.1.4)
       nokogiri (~> 1.3)
@@ -322,6 +292,7 @@ DEPENDENCIES
   capybara
   coffee-rails
   database_cleaner
+  devise
   dynamic_form
   email_spec
   factory_girl_rails
@@ -335,11 +306,6 @@ DEPENDENCIES
   mongoid
   mongoid-paperclip
   mongoid-rspec
-  omniauth!
-  omniauth-facebook
-  omniauth-google-oauth2
-  omniauth-identity
-  omniauth-twitter
   pry
   pry-nav
   rails

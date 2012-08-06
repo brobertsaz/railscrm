@@ -38,7 +38,7 @@ module RebelFoundation
       g.orm                 :mongoid
       g.template_engine     :haml
       g.test_framework      :rspec
-      g.fixture_replacement :factory_girl
+      g.fixture_replacement :factory_girl, dir: 'spec/factories'
       
       g.stylesheets         false
       g.javascripts         false
