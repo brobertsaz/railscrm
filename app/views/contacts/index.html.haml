@@ -26,7 +26,7 @@
       - @contact.each do |f|
         %tr
           %td
-            = link_to f.first_name, contact_path(f)
+            = f.first_name
           %td
             = f.last_name
           %td
@@ -38,4 +38,5 @@
           %td
             =f.address
           %td
-            = link_to 'Delete', contact_path(f), method: 'delete', class: 'btn btn-danger', data: {confirm: 'Are you sure that you want to delete this contact?'}
+            = link_to 'Edit', contact_path(f), class: 'btn btn-mini btn-primary'
+            = link_to 'Delete', contact_path(f), method: 'delete', class: 'btn btn-mini btn-danger', data: {confirm: 'Are you sure that you want to delete this contact?'}

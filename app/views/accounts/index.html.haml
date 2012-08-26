@@ -20,12 +20,12 @@
         %th
           Email
         %th
-          Address
+          Actions
     %tbody
       - @accounts.each do |account|
         %tr
           %td
-            = link_to account.name, account_path(account)
+            = account.name
           %td
             = account.assigned_to.to_s
           %td
@@ -35,4 +35,5 @@
           %td
             = account.email
           %td
-            = link_to 'Delete', account_path(account), method: 'delete', class: 'btn btn-danger', data: {confirm: 'Are you sure that you want to delete this account?'}
+            = link_to 'Edit', account_path(account), class: 'btn btn-mini btn-primary'
+            = link_to 'Delete', account_path(account), method: 'delete', class: 'btn btn-mini btn-danger', data: {confirm: 'Are you sure that you want to delete this account?'}

@@ -8,8 +8,8 @@ class TasksController < ApplicationController
   
   def show
     @task = Task.find params[:id]
-      @task_due_dates = Task.due_dates
-      @task_types = Task.task_type
+    @task_due_dates = Task.due_dates
+    @task_types = Task.task_type
   end
 
   def create
@@ -21,9 +21,6 @@ class TasksController < ApplicationController
       render :new
     end
   end
-
-
-
 
   def destroy
     Task.find(params[:id]).destroy

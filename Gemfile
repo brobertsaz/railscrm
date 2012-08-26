@@ -20,8 +20,6 @@ gem 'haml'
 gem 'haml-rails'
 gem 'aws-s3'
 gem 'mongoid-paperclip', require: 'mongoid_paperclip'
-gem 'dynamic_form'
-
 gem 'devise'
 gem 'bcrypt-ruby'
 

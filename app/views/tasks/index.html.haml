@@ -25,7 +25,7 @@
       - @tasks.each do |task|
         %tr
           %td
-            = link_to task.task_name, task_path(task)
+            = task.task_name
           %td
             = task.due_date.to_s.capitalize
           %td
@@ -35,4 +35,5 @@
           %td
             = task.lead_for_task
           %td
-            = link_to 'Delete', task_path(task), method: 'delete', class: 'btn btn-danger', confirm: 'Are you sure that you want to delete this task?'
+            = link_to 'Edit', task_path(task), class: 'btn btn-mini btn-primary'
+            = link_to 'Delete', task_path(task), method: 'delete', class: 'btn btn-mini btn-danger', confirm: 'Are you sure that you want to delete this task?'

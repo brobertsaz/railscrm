@@ -2,12 +2,14 @@
   .fieldset
     .legend
     = simple_form_for @task, :html => { :class => 'form-horizontal' } do |f|
-      .span4
-        = f.input :task_name
-        = f.input :due_date, collection: (@task_due_dates)
-        = f.input :assigned_to, collection: (User.all.map(&:first_name).prepend('None'))
-      .span4
-        = f.input :task_type, collection: (@task_types)
-        = f.input :lead_for_task, collection: (Lead.all.map(&:full_name)), label: 'For Lead'
-      .span8
-        = f.submit class: 'btn btn-large'
+      .row
+        .span4
+          = f.input :task_name
+          = f.input :due_date, collection: (@task_due_dates)
+          = f.input :assigned_to, collection: (User.all.map(&:first_name).prepend('None'))
+        .span4
+          = f.input :task_type, collection: (@task_types)
+          = f.input :lead_for_task, collection: (Lead.all.map(&:full_name)), label: 'For Lead'
+      .row.pull-right
+        = f.submit class: 'btn btn-primary'
+        = link_to 'Cancel', tasks_path, class: "btn btn-danger"

@@ -8,6 +8,10 @@ class AccountsController < ApplicationController
 		@account = Account.new
 	end
 
+	def show
+		@account = Account.find params[:id]
+	end
+
 	def create
     @account = Account.create params[:account]
 	    if @account.save
@@ -16,6 +20,17 @@ class AccountsController < ApplicationController
 	      render :new
 	    end
 	end
+
+	def update
+		@account = Account.find params[:id]
+
+		 if @account.update_attributes params[:account]
+      redirect_to account_path @account, flash[:notice] = 'Account Updated'
+    else
+      render :edit
+    end
+  end
+
 
 	def destroy
     @account = Account.find params[:id]
@@ -26,5 +41,5 @@ class AccountsController < ApplicationController
       flash[:error] = 'Account could not be deleted'
       redirect_to :back
     end
-end
+	end
 end

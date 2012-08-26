@@ -11,7 +11,7 @@
         .nav-collapse
           %ul.pull-left
             %li
-              = link_to 'Rebelhold CRM', root_path, class: 'brand'
+              = link_to 'RebelFoundation CRM', root_path, class: 'brand'
           %ul.pull-right
             - if user_signed_in?
               / %li
@@ -24,8 +24,8 @@
                 = link_to 'Accounts', :accounts
               %li
                 = link_to 'Contacts', :contacts
-              %li
-                = link_to 'Opportunities'
+              / %li
+              /   = link_to 'Opportunities'
               %li
                 = link_to 'Edit profile', edit_user_registration_path
               %li

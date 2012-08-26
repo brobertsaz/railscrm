@@ -34,6 +34,11 @@ class User
   field :company
   field :phone
 
+  def full_name
+    self.first_name + " " + self.last_name
+  end
+
+
   ## Confirmable
   # field :confirmation_token,   :type => String
   # field :confirmed_at,         :type => Time
