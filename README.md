@@ -37,8 +37,10 @@ This is the intended workflow:
 The initial setup will require Users to be created.  Once your Organization has Users, it can assign leads, contacts, opportunities and accounts to them.
 
 
-# Copyright (c) 2012 Bob Roberts <bob@rebel-outpost.com>
-# Distributed under the MIT license.
-# http://www.opensource.org/licenses/mit-license.php
+
+
+Copyright (c) 2012 Bob Roberts <bob@rebel-outpost.com>
+Distributed under the MIT license.
+http://www.opensource.org/licenses/mit-license.php
 
 
