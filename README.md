@@ -18,3 +18,27 @@ Install
     bundle install
 
 
+Work Flow
+=========
+
+This is the intended workflow:
+
+	1. Create a Lead
+	2. Create a Task for a Lead
+	3. Convert Lead
+		3.1 After qualifying a lead it can be converted to to contact
+		3.2 During the conversion process, an Opportunity can be created
+	4. Create a Contact 
+		4.1 These do NOT have to be a converted lead
+	5. Create an Account
+		5.1 An account can have many contacts and is generally the Company
+
+
+The initial setup will require Users to be created.  Once your Organization has Users, it can assign leads, contacts, opportunities and accounts to them.
+
+
+# Copyright (c) 2012 Bob Roberts <bob@rebel-outpost.com>
+# Distributed under the MIT license.
+# http://www.opensource.org/licenses/mit-license.php
+
+
