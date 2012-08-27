@@ -22,7 +22,7 @@ gem 'aws-s3'
 gem 'mongoid-paperclip', require: 'mongoid_paperclip'
 gem 'devise'
 gem 'bcrypt-ruby'
-
+gem 'airbrake'
 gem 'stripe'
 
 group :production do
