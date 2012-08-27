@@ -27,6 +27,7 @@ gem 'stripe'
 
 group :production do
   gem 'thin'
+  gem 'ruby', '1.9.3'
 end
 
 group :development do
