@@ -36,4 +36,4 @@
             = task.lead_for_task
           %td
             = link_to 'Edit', task_path(task), class: 'btn btn-mini btn-primary'
-            = link_to 'Delete', task_path(task), method: 'delete', class: 'btn btn-mini btn-danger', confirm: 'Are you sure that you want to delete this task?'
+            = link_to 'Delete', task_path(task), method: 'delete', class: 'btn btn-mini btn-danger', data: { confirm: 'Are you sure that you want to delete this task?'}

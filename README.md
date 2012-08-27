@@ -39,7 +39,7 @@ The initial setup will require Users to be created.  Once your Organization has 
 
 
 
-Copyright (c) 2012 Bob Roberts <bob@rebel-outpost.com>
+Copyright &copy; 2012 Bob Roberts <bob@rebel-outpost.com>
 Distributed under the MIT license.
 http://www.opensource.org/licenses/mit-license.php
 
