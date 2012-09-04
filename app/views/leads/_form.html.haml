@@ -15,8 +15,8 @@
           = f.input :interested_in, collection:(@lead_interests)
           = f.input :lead_status, collection:(@lead_status)
           = f.input :lead_source, collection:(@lead_sources)
-      %hr
-      %button.btn{"data-target" => ".address-info", "data-toggle" => "collapse", :type => "button"}
+
+      %a{"data-target" => ".address-info", "data-toggle" => "collapse"}
         Address Info >>>
       .row.address-info.collapse
         %br
