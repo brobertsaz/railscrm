@@ -7,7 +7,7 @@ Rails CRM uses Mongoid and Mongodb, Twitter Bootstrap, Devise for authentication
 
 There are a lot of features that are not yet implemented and I will add them to the Pivotal Tracker https://www.pivotaltracker.com/projects/503421.
 
-There is also a live version on Heroku at http://mongocrm.herokuapp.com/
+There is also a live version on Heroku at http://demo.railscrm.com
 
 This is a work in progress, so if you would like to help out or have suggestions, feel free to contact me at bob@rebel-outpost.com 
 
