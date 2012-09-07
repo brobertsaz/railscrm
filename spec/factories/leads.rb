@@ -6,5 +6,6 @@ FactoryGirl.define do
     last_name							 'Lead'
     email                  'lead@example.com' 
     phone									 '8005551212'
-   end
+    lead_owner						 'bill@bill.com'
+  end
 end

@@ -1,4 +1,4 @@
-You've been assigned a \"#{@task["task_type"]}\" task for the task \"#{@task["task_name"]}\"on MongoCRM
+You've been assigned a #{@task["task_type"]} task for the lead #{@task["lead_for_task"]} on RailsCRM.
 
 Click here to view it:
 = link_to 'Click here to view task', Rails.public_path+task_path(@task.id)

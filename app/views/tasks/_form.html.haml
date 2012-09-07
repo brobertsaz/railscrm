@@ -5,11 +5,17 @@
       .row
         .span4
           = f.input :task_name
-          = f.input :due_date, collection: (@task_due_dates)
-          = f.input :assigned_to, collection: (User.all.map(&:first_name).prepend('None'))
+          = f.input :due_date, :as => :string, :input_html => { :class => 'jquery-ui-date'} #collection: (@task_due_dates)
+          = f.input :assigned_to, collection: (@task_owners)
         .span4
           = f.input :task_type, collection: (@task_types)
-          = f.input :lead_for_task, collection: (Lead.all.map(&:full_name)), label: 'For Lead'
+          = f.input :lead_for_task, collection: (@leads), label: 'For Lead'
       .row.pull-right
         = f.submit class: 'btn btn-primary'
         = link_to 'Cancel', tasks_path, class: "btn btn-danger"
+
+:javascript
+  $(document).ready(function() {
+   $(".jquery-ui-date").datepicker();
+  });
+  

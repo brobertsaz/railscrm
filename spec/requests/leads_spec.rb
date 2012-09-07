@@ -22,6 +22,7 @@ describe "Leads" do
     fill_in 'lead_comments',    with: 'Needs ASAP'
     select 'New',               from: 'lead_lead_status'
     select 'Web Lead',          from: 'lead_lead_source'
+    select "#{@user2.email}",   from: 'lead_lead_owner'
     click_button 'Create Lead'
     page.should have_content 'New Lead Created'
   end
@@ -29,13 +30,12 @@ describe "Leads" do
   context 'with created lead' do
   
     before do
-      @lead   = FactoryGirl.create :lead, first_name: 'Bill', last_name: 'Gates', phone: '8885551212', interested_in: 'ios', lead_status: 'new', lead_source: 'web'
-      @lead2  = FactoryGirl.create :lead, first_name: 'Bob', last_name: 'Marley', phone: '8005551212', interested_in: 'web_app', lead_status: 'contacted', lead_source: 'referral', email: 'bob@marley.com'
+      @lead   = FactoryGirl.create :lead, first_name: 'Bill', last_name: 'Gates', phone: '8885551212', interested_in: 'ios', lead_status: 'new', lead_source: 'web', lead_owner: @user.email
+      @lead2  = FactoryGirl.create :lead, first_name: 'Bob', last_name: 'Marley', phone: '8005551212', interested_in: 'web_app', lead_status: 'contacted', lead_owner: @user.email, lead_source: 'referral', email: 'bob@marley.com'
     end
     
     it 'should edit a lead' do
       visit lead_path @lead
-      
       fill_in 'lead_company', with: 'XYZ'
       select 'Contacted', from: 'lead_lead_status'
       click_button 'Update'
@@ -56,20 +56,20 @@ describe "Leads" do
     
     it 'assigns lead to user' do
       visit lead_path @lead
-      select 'Jim Jones', from: 'lead_assigned_to_id'
+      select "#{@user2.email}", from: 'lead_lead_owner'
       click_button 'Update'
       page.should have_content 'Lead Updated'
       visit leads_path
-      page.should have_content @user2.first_name
+      page.should have_content @user2.email
     end
     
     it 'reassigns lead' do 
       visit lead_path @lead
-      select 'None', from: 'lead_assigned_to_id'
+      select "#{@user.email}", from: 'lead_lead_owner'
       click_button 'Update'
       page.should have_content 'Lead Updated'
       visit leads_path
-      page.should have_content 'None'
+      page.should have_content @user.email
     end
     
     it 'deletes a lead' do

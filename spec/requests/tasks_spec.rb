@@ -14,9 +14,9 @@ describe 'Tasks' do
     click_link 'Create Task'
     fill_in "task_task_name",       with: 'test task'
     select 'Today',                 from: 'task_due_date'
-    select "#{@user2.first_name}",  from: 'task_assigned_to'
+    select "#{@user2.email}",       from: 'task_assigned_to'
     select 'Call',                  from: 'task_task_type'
-    select "#{@lead.full_name}",    from: 'task_lead_for_task'
+    select "#{@lead.email}",        from: 'task_lead_for_task'
     click_button 'Create Task'
     page.should have_content 'Task Created'
     Task.count.should == 1
@@ -26,9 +26,9 @@ describe 'Tasks' do
     click_link 'Tasks'
     click_link 'Create Task'
     select 'Today',                 from: 'task_due_date'
-    select "#{@user2.first_name}",  from: 'task_assigned_to'
+    select "#{@user2.email}",       from: 'task_assigned_to'
     select 'Call',                  from: 'task_task_type'
-    select "#{@lead.full_name}",    from: 'task_lead_for_task'
+    select "#{@lead.email}",        from: 'task_lead_for_task'
     click_button 'Create Task'
     page.should have_content "can't be blank"
     page.should_not have_content 'Task Updated'
@@ -36,13 +36,17 @@ describe 'Tasks' do
   end
     
   it 'notifies the user they have been assigned to a task' do
-    pending 'need to work on the mailer'
-    #we cleared the deliveries on start, so it should have 1 email now.
-    ActionMailer::Base.deliveries.each.count.should == 1
-    #ensure email was sent to correct recipient
+    click_link 'Tasks'
+    click_link 'Create Task'
+    fill_in "task_task_name",       with: 'another test task'
+    select 'Today',                 from: 'task_due_date'
+    select "#{@user2.email}",       from: 'task_assigned_to'
+    select 'Call',                  from: 'task_task_type'
+    select "#{@lead.email}",        from: 'task_lead_for_task'
+    click_button 'Create Task'
+    ActionMailer::Base.deliveries.each.count.should == 2
     ActionMailer::Base.deliveries[0].to.should include @user2.email
-    #ensure message body contains the name and type of task
-    ActionMailer::Base.deliveries[0].body.should include 'call' && 'test task' 
+    ActionMailer::Base.deliveries[0].body.should include 'call' && @lead.email
   end
 
   context 'edit' do
@@ -55,9 +59,9 @@ describe 'Tasks' do
       click_link "Edit"
       fill_in "task_task_name",         with: 'test task 2 updated'
       select 'Tomorrow',                from: 'task_due_date'
-      select "#{@user2.first_name}",    from: 'task_assigned_to'
+      select "#{@user2.email}",         from: 'task_assigned_to'
       select 'Email',                   from: 'task_task_type'
-      select "#{@lead.full_name}",      from: 'task_lead_for_task'
+      select "#{@lead.email}",          from: 'task_lead_for_task'
       click_button 'Update Task'
       page.should have_content 'Task Updated'
       @task.reload
@@ -66,16 +70,19 @@ describe 'Tasks' do
 
 
     it 'notifies the user their task has changed' do
-      pending 'mailer stuff'
-      #we cleared the deliveries on start, so it should have 1 email now.
-      ActionMailer::Base.deliveries.each.count.should == 1
-      #ensure email was sent to correct recipient
-      ActionMailer::Base.deliveries[0].to.should include @user2.email
-      #ensure message body contains the name and type of task
-      ActionMailer::Base.deliveries[0].body.should include 'Email' && 'test task123456'
+      click_link 'Tasks'
+      click_link "Edit"
+      fill_in "task_task_name",         with: 'test task 2 updated'
+      select 'Tomorrow',                from: 'task_due_date'
+      select "#{@user2.email}",         from: 'task_assigned_to'
+      select 'Email',                   from: 'task_task_type'
+      select "#{@lead.email}",          from: 'task_lead_for_task'
+      click_button 'Update Task'
+
+      ActionMailer::Base.deliveries.last.to.should include @user2.email
+      ActionMailer::Base.deliveries.last.body.should include 'test task 2 updated' && @lead.email
     end
-    
-    
+        
   end
 
   context 'delete' do
