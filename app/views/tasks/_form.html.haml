@@ -5,7 +5,7 @@
       .row
         .span4
           = f.input :task_name
-          = f.input :due_date, :as => :string, :input_html => { :class => 'jquery-ui-date'} #collection: (@task_due_dates)
+          = f.input :due_date, :as => :string, :input_html => { :class => 'jquery-ui-date'} 
           = f.input :assigned_to, collection: (@task_owners)
         .span4
           = f.input :task_type, collection: (@task_types)
