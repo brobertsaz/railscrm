@@ -43,7 +43,5 @@
             / %a.close{"data-dismiss" => "alert"} &#215;
             = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) 
 
-    .span3#sidebar
-      = yield :sidebar
-    .span9#content
+    .span12.offset1#content
       = yield

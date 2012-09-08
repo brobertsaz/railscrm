@@ -10,7 +10,7 @@
           = f.input :phone
           = f.input :company
           = f.input :comments, as: :text, :input_html => {rows: 5}
-        .span4
+        .span4.offset1
           / - binding.pry
           = f.input :lead_owner,      collection:(@lead_owner)
           = f.input :interested_in,   collection:(@lead_interests)
