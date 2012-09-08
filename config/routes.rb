@@ -13,6 +13,7 @@ RebelFoundation::Application.routes.draw do
   resources :tasks
   resources :contacts
   resources :accounts
+  resources :opportunities
    
   root to: 'pages#index'
 end

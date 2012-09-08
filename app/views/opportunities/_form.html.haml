@@ -1,0 +1,21 @@
+.form-horizontal
+  .fieldset
+    .legend
+    = simple_form_for @opportunity, :html => { :class => 'form-horizontal' }  do |f|
+      .row
+        .span4
+          = f.input :name
+          = f.input :account_name,  collection:(@opportunity_account)
+          = f.input :type,          collection:(@opportunity_type)
+          = f.input :amount
+          = f.input :stage,         collection:(@opportunity_stage)
+          = f.input :owner,         collection:(@opportunity_owner)
+        .span4.offset1
+          = f.input :closing_date
+          = f.input :probability
+          = f.input :contact_name
+          = f.input :comments
+
+      .row.pull-right 
+        = f.submit class: 'btn btn-primary'
+        = link_to 'Cancel', leads_path, class: "btn btn-danger"

@@ -1,7 +1,7 @@
 !!! 5
 %html
   %head
-    %title RebelFoundation CRM
+    %title Rails CRM
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
@@ -11,7 +11,7 @@
         .nav-collapse
           %ul.pull-left
             %li
-              = link_to 'RebelFoundation CRM', root_path, class: 'brand'
+              = link_to 'Rails CRM', root_path, class: 'brand'
           %ul.pull-right
             - if user_signed_in?
               / %li
@@ -24,8 +24,8 @@
                 = link_to 'Contacts', :contacts              
               %li
                 = link_to 'Accounts', :accounts
-              / %li
-              /   = link_to 'Opportunities'
+              %li
+                = link_to 'Opportunities', :opportunities
               %li
                 = link_to 'Edit profile', edit_user_registration_path
               %li
