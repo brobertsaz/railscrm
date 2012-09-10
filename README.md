@@ -11,11 +11,29 @@ There is also a live version on Heroku at http://demo.railscrm.com
 
 This is a work in progress, so if you would like to help out or have suggestions, feel free to contact me at bob@rebel-outpost.com 
 
+Mongodb
+=======
+
+Rails CRM uses Mongodb for its database.  You will need to have it installed to use Rails CRM.  To install mongocrm, checkout the Mongodb installation information at http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/
+
+RVM
+===
+
+Rails CRM has a .rvmrc file for specifying the Ruby version.  If you are not using RVM you should.  RVM can be installed at the command line using:
+
+	 curl -L https://get.rvm.io | bash -s stable --ruby
+
+
 Install
 =======
 
-    gem install bundler
-    bundle install
+	1.  git clone the repository
+	2.  cd into rails_crm
+	3.  accept the .rvmrc file
+	4.  gem install bundler
+  5.  bundle install
+
+  Start rails server and go to localhost:3000 and you will see the Rails CRM login page.  Just create a user and you are up and running.
 
 
 Work Flow
