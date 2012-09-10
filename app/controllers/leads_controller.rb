@@ -9,10 +9,7 @@ class LeadsController < ApplicationController
   
   def create
     @lead = Lead.new params[:lead]
-    unless @lead_owner == nil
-      lead_owner = User.where(email: @lead.lead_owner).first
-    end
-    @lead.update_attributes(assigned_to_id: lead_owner.id)
+    @lead.update_attributes(assigned_to: @lead.lead_owner)
     if @lead.save
       redirect_to lead_path @lead, flash[:notice] = 'New Lead Created'
     else

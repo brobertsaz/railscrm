@@ -1,3 +1,39 @@
 .well
   .functions.pull-right
     = link_to 'Create New Opportunity', new_opportunity_path
+
+  %table.table.table-striped
+    %thead
+      %tr
+        %th
+          Opportunity Name
+        %th
+          Account Name
+        %th
+          Amount
+        %th
+          Stage
+        %th
+          Assigned to
+        %th
+          Closing Date
+        %th
+          Actions
+    %tbody
+      - @opportunities.each do |opportunity|
+        %tr
+          %%td
+            = opportunity.opportunity_name
+          %td
+            = opportunity.account_name
+          %td
+            = opportunity.amount
+          %td
+            = opportunity.stage
+          %td
+            = opportunity.owner
+          %td
+            = opportunity.closing_date
+          %td
+            = link_to 'Edit', opportunity_path(opportunity), class: 'btn btn-mini btn-primary'
+            = link_to 'Delete', opportunity_path(opportunity), method: 'delete', class: 'btn btn-mini btn-danger', data: {confirm: 'Are you sure that you want to delete this opportunity?'}
