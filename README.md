@@ -31,9 +31,9 @@ Install
 	2.  cd into rails_crm
 	3.  accept the .rvmrc file
 	4.  gem install bundler
-  5.  bundle install
+	5.  bundle install
 
-  Start rails server and go to localhost:3000 and you will see the Rails CRM login page.  Just create a user and you are up and running.
+Start rails server and go to localhost:3000 and you will see the Rails CRM login page.  Just create a user and you are up and running.
 
 
 Work Flow
