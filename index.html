@@ -36,17 +36,36 @@
 
 <p>There are a lot of features that are not yet implemented and I will add them to the Pivotal Tracker <a href="https://www.pivotaltracker.com/projects/503421">https://www.pivotaltracker.com/projects/503421</a>.</p>
 
-<p>There is also a live version on Heroku at <a href="http://mongocrm.herokuapp.com/">http://mongocrm.herokuapp.com/</a></p>
+<p>There is also a live version on Heroku at <a href="http://demo.railscrm.com">http://demo.railscrm.com</a></p>
 
 <p>This is a work in progress, so if you would like to help out or have suggestions, feel free to contact me at <a href="mailto:bob@rebel-outpost.com">bob@rebel-outpost.com</a> </p>
 
-<h1>Install</h1>
+<h1>Mongodb</h1>
 
-<pre><code>gem install bundler
-bundle install
+<p>Rails CRM uses Mongodb for its database.  You will need to have it installed to use Rails CRM.  To install mongocrm, checkout the Mongodb installation information at <a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/">http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/</a></p>
+
+<h1>RVM</h1>
+
+<p>Rails CRM has a .rvmrc file for specifying the Ruby version.  If you are not using RVM you should.  RVM can be installed at the command line using:</p>
+
+<pre><code> curl -L https://get.rvm.io | bash -s stable --ruby
 </code></pre>
 
-<h1>Work Flow</h1>
+<h1>Install</h1>
+
+<pre><code>1.  git clone the repository
+2.  cd into rails_crm
+3.  accept the .rvmrc file
+4.  gem install bundler
+</code></pre>
+
+<ol>
+<li>
+<p>bundle install</p>
+
+<p>Start rails server and go to localhost:3000 and you will see the Rails CRM login page.  Just create a user and you are up and running.</p>
+</li>
+</ol><h1>Work Flow</h1>
 
 <p>This is the intended workflow:</p>
 
