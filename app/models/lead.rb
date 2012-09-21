@@ -6,7 +6,7 @@ class Lead < Contact
   field :lead_owner
 
   belongs_to :assigned_to, class_name: 'User'
-  embeds_many :notes
+  has_many :notes
   accepts_nested_attributes_for :notes, allow_destroy: true
   validates_presence_of :lead_owner
 

@@ -14,11 +14,11 @@
       = f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it"
       = f.input :password_confirmation
       = f.input :current_password, :hint => "we need your current password to confirm your changes"
-      = f.submit "Update", class: 'btn btn-large'
+      = f.submit "Update", class: 'btn btn-primary'
 
   %h3
-    Cancel my account
+    Cancel My Account
 
-  = link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete 
+  = link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class: 'btn btn-mini' 
 
-  = link_to "Back", :back 
+  = link_to "Back", :back, class: 'btn btn-mini' 

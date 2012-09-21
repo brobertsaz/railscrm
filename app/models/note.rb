@@ -3,5 +3,5 @@ class Note
   
   field :content
   
-  embedded_in :lead
+  belongs_to :lead
 end

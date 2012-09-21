@@ -9,19 +9,19 @@ describe "Opportunities" do
   end
   
   it 'creates an opportunity' do
-  	click_link 'Opportunities'
+    click_link 'Opportunities'
     click_link 'Create New Opportunity'
 
-    fill_in 'opportunity_opportunity_name', 		 with: 'Next Big Deal'
-    select 'Account name', 					             from: 'opportunity_account_name'
-    select 'New Customer', 					             from: 'opportunity_type'
-    fill_in 'opportunity_amount', 	             with: '10,000'
-    select 'Proposal', 							             from: 'opportunity_stage'
-    select "#{@user.email}",				             from: 'opportunity_owner'
-    fill_in 'opportunity_closing_date',          with: '09/11/2012'
-    fill_in 'opportunity_probability', 	         with: '50%'
-    fill_in 'opportunity_contact_name',	         with: 'Mister Smith'
-    fill_in 'opportunity_comments', 		         with: 'Lets nail this one'
+    fill_in 'opportunity_opportunity_name', 		  with: 'Next Big Deal'
+    select 'Account name', 					              from: 'opportunity_account_name'
+    select 'New Customer', 					              from: 'opportunity_type'
+    fill_in 'opportunity_amount', 	                          with: '10,000'
+    select 'Proposal', 							        from: 'opportunity_stage'
+    select "#{@user.email}",				                    from: 'opportunity_owner'
+    fill_in 'opportunity_closing_date',                       with: '09/11/2012'
+    fill_in 'opportunity_probability', 	                    with: '50%'
+    fill_in 'opportunity_contact_name',	                    with: 'Mister Smith'
+    fill_in 'opportunity_comments', 		              with: 'Lets nail this one'
     click_button 'Create Opportunity'
 
     page.should have_content 'New Opportunity Created'

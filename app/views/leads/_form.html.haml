@@ -1,40 +1,51 @@
-.form-horizontal
-  .fieldset
-    .legend
+.span12.offset10
+  = link_to 'Convert Lead'
+%br
+  .form-horizontal
     = simple_form_for @lead, :html => { :class => 'form-horizontal' }  do |f|
-      .row
-        .span4
-          = f.input :first_name
-          = f.input :last_name
-          = f.input :email, as: :email
-          = f.input :phone
-          = f.input :company
-          = f.input :comments, as: :text, :input_html => {rows: 5}
-        .span4.offset1
-          / - binding.pry
-          = f.input :lead_owner,      collection:(@lead_owner)
-          = f.input :interested_in,   collection:(@lead_interests)
-          = f.input :lead_status,     collection:(@lead_status)
-          = f.input :lead_source,     collection:(@lead_sources)
+      %fieldset
+        %legend Lead Info
+        .row
+          .span4
+            = f.input :first_name
+            = f.input :last_name
+            = f.input :email, as: :email
+            = f.input :phone
+            = f.input :company
+            = f.input :comments, as: :text, :input_html => {rows: 5}
+          .span4.offset1
+            = f.input :lead_owner,      collection:(@lead_owner)
+            = f.input :interested_in,   collection:(@lead_interests)
+            = f.input :lead_status,     collection:(@lead_status)
+            = f.input :lead_source,     collection:(@lead_sources)
 
-      %a{"data-target" => ".address-info", "data-toggle" => "collapse"}
-        Address Info >>>
-      .row.address-info.collapse
+
+      %fieldset
+        %legend Address Info
+        .row
+          .span4
+            = f.input :address
+            = f.input :city
+          .span4
+            = f.input :state
+            = f.input :zip
         %br
-        .span4
-          = f.input :address
-          = f.input :city
-        .span4
-          = f.input :state
-          = f.input :zip
-      .row.pull-right 
-        = f.submit class: 'btn btn-primary'
-        = link_to 'Cancel', leads_path, class: "btn btn-danger"
+        .row.pull-right 
+          = f.submit class: 'btn btn-primary'
+          = link_to 'Cancel', leads_path, class: "btn btn-danger"
+
+  %fieldset 
+    %legend Lead Activities
+    %p Recent Activity for #{@lead.full_name}
+    %a{"data-target" => ".new-note", "data-toggle" => "collapse", class: 'btn btn-primary'}
+      Add a Note
+    .row.new-note.collapse
+      .span12.offset2
+        = simple_form_for [@lead, Note.new] do |n|
+          = n.input :content, as: :text, input_html: {rows: 5, class: "field span9"}
+          .span12.offset7
+            = n.submit class: 'btn btn-primary'
 
 
-      / = f.fields_for :notes do |note_form|
-      /   = note_form.label :content, "Add note for #{@lead.first_name}"
-      /   = note_form.text_area :content, rows: 5, class: 'span6'
-      /   = note_form.submit 'Add Note', class: 'btn btn-large'
-      / - @lead.notes.each do |note|
-      /   %p= note.content
+
+        

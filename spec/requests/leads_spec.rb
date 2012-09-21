@@ -11,7 +11,7 @@ describe "Leads" do
   it 'should create new lead' do
     click_link 'Leads'
     click_link 'Create Lead'
-    current_path.should == new_lead_path
+    current_path.should_be new_lead_path
     
     fill_in 'lead_first_name',  with: 'Bill'
     fill_in 'lead_last_name',   with: 'Gates'
@@ -80,13 +80,14 @@ describe "Leads" do
       page.should_not have_content 'Bill Gates'
     end
     
-    # it 'adds a note' do
-    #   visit lead_path @lead
-    #   fill_in 'lead_note_note_content', with: 'this is a note'
-    #   click_button 'Add Note'
-    #   page.should have_content 'Lead Updated'
-    #   page.should have_content 'this is a note'
-    # end
+    it 'adds a note', js: true do
+      visit lead_path @lead
+      click_button 'Add a Note'
+      fill_in 'lead_note_note_content', with: 'this is a note'
+      click_button 'Add Note'
+      page.should have_content 'Lead Updated'
+      page.should have_content 'this is a note'
+    end
           
   end
   

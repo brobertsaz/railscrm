@@ -6,7 +6,7 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    %section.container-liquid
+    %section.container-fluid
       .navigation.navbar
         .nav-collapse
           %ul.pull-left
@@ -14,8 +14,6 @@
               = link_to 'Rails CRM', root_path, class: 'brand'
           %ul.pull-right
             - if user_signed_in?
-              / %li
-              /   = link_to 'Dashboard', :dashboard
               %li
                 = link_to 'Leads', :leads
               %li
@@ -37,11 +35,12 @@
                 = link_to 'Register', new_user_registration_path
 
     - if flash.present?
-      %section.container-liquid
+      %section.container-fluid
         - flash.each do |name, msg|
           %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
             / %a.close{"data-dismiss" => "alert"} &#215;
             = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) 
 
-    .span12.offset1#content
-      = yield
+    .container
+      .span12#content
+        = yield

@@ -35,6 +35,7 @@ group :development do
   gem 'taps'
   gem 'unicorn'
   gem 'hpricot'
+  gem 'pry-rails'
 end
 
 group :test, :development do
