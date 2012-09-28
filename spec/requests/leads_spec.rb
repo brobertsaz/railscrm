@@ -8,10 +8,10 @@ describe "Leads" do
     login_as @user
   end
   
-  it 'should create new lead' do
+  it 'should create new lead', js: true do
     click_link 'Leads'
     click_link 'Create Lead'
-    current_path.should_be new_lead_path
+    current_path.should == new_lead_path
     
     fill_in 'lead_first_name',  with: 'Bill'
     fill_in 'lead_last_name',   with: 'Gates'
@@ -32,6 +32,7 @@ describe "Leads" do
     before do
       @lead   = FactoryGirl.create :lead, first_name: 'Bill', last_name: 'Gates', phone: '8885551212', interested_in: 'ios', lead_status: 'new', lead_source: 'web', lead_owner: @user.email
       @lead2  = FactoryGirl.create :lead, first_name: 'Bob', last_name: 'Marley', phone: '8005551212', interested_in: 'web_app', lead_status: 'contacted', lead_owner: @user.email, lead_source: 'referral', email: 'bob@marley.com'
+      @account = FactoryGirl.create :account    
     end
     
     it 'should edit a lead' do
@@ -80,14 +81,29 @@ describe "Leads" do
       page.should_not have_content 'Bill Gates'
     end
     
-    it 'adds a note', js: true do
+    it 'adds a note' do
+      pending 'still working on it'
       visit lead_path @lead
-      click_button 'Add a Note'
+      click_link 'New Note'
       fill_in 'lead_note_note_content', with: 'this is a note'
-      click_button 'Add Note'
+      click_button 'Create Note'
       page.should have_content 'Lead Updated'
       page.should have_content 'this is a note'
     end
+
+    it 'converts a lead', js: true do
+      visit lead_path @lead
+      click_link 'Convert Lead'
+      select "#{@account.name}", from: 'lead_account_name'
+      count_before = Opportunity.count
+      click_button 'Convert'
+      Opportunity.count.should == count_before + 1
+      Contact.last.first_name.should == @lead.first_name
+      page.should have_content 'Lead has been converted'
+    end
+
+
+    
           
   end
   

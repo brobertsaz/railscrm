@@ -4,6 +4,19 @@
       View Lead 
   %br
     = render partial: 'form'
+
+  %fieldset 
+    %legend Lead Activities
+    %p Recent Activity for #{@lead.full_name}
+    %a{"data-target" => ".new-note", "data-toggle" => "collapse", class: 'btn btn-primary'}
+      New Note
+    .row.new-note.collapse
+      .span9.offset2
+        = simple_form_for [@lead, Note.new] do |n|
+          = n.input :content, as: :text, input_html: {rows: 5, class: "field span9"}
+          .span12.offset7
+            = n.submit class: 'btn btn-primary'
+
     
 
 

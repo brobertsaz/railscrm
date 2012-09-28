@@ -34,10 +34,16 @@ class LeadsController < ApplicationController
   
   def update
     @lead = Lead.find params[:id]
-    if @lead.update_attributes params[:lead]
-      redirect_to lead_path @lead, flash[:notice] = 'Lead Updated'
-    else
-      render :edit
+    if params[:commit] == 'Convert'
+      binding.pry
+      @contacts = Contact.all.map(&:email)
+
+    else  
+      if @lead.update_attributes params[:lead]
+        redirect_to lead_path @lead, flash[:notice] = 'Lead Updated'
+      else
+        render :edit
+      end
     end
   end
   
@@ -51,6 +57,11 @@ class LeadsController < ApplicationController
       flash[:error] = 'Lead could not be deleted'
       redirect_to :back
     end
+  end
+
+  def convert
+    @lead = Lead.find params[:id]
+    @accounts = Account.all.map(&:name)
   end
 
 end

@@ -1,5 +1,5 @@
-.span12.offset10
-  = link_to 'Convert Lead'
+.span12.offset9
+  = link_to 'Convert Lead', convert_lead_path(@lead), data: {toggle: 'modal'}, class: 'btn btn-primary'
 %br
   .form-horizontal
     = simple_form_for @lead, :html => { :class => 'form-horizontal' }  do |f|
@@ -34,18 +34,3 @@
           = f.submit class: 'btn btn-primary'
           = link_to 'Cancel', leads_path, class: "btn btn-danger"
 
-  %fieldset 
-    %legend Lead Activities
-    %p Recent Activity for #{@lead.full_name}
-    %a{"data-target" => ".new-note", "data-toggle" => "collapse", class: 'btn btn-primary'}
-      Add a Note
-    .row.new-note.collapse
-      .span12.offset2
-        = simple_form_for [@lead, Note.new] do |n|
-          = n.input :content, as: :text, input_html: {rows: 5, class: "field span9"}
-          .span12.offset7
-            = n.submit class: 'btn btn-primary'
-
-
-
-        

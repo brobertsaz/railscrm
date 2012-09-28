@@ -12,6 +12,12 @@ RebelFoundation::Application.routes.draw do
   resources :leads do
     resources :notes
   end
+
+  resources :leads do
+    member do
+      get :convert
+    end
+  end
   
   resources :tasks
   resources :contacts
