@@ -5,6 +5,8 @@ class Lead < Contact
   field :lead_source
   field :lead_owner
   field :account_name
+  field :opportunity_name
+  field :opportunity_owner
 
   belongs_to :assigned_to, class_name: 'User'
   has_many :notes

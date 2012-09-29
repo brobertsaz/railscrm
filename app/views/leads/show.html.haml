@@ -1,21 +1,31 @@
 .form.well
   .label
     %h2
-      View Lead 
+      View Lead
   %br
+    .pull-right
+      = link_to 'Convert Lead', convert_lead_path(@lead), data: {toggle: 'modal'}, class: 'btn btn-primary'
     = render partial: 'form'
 
   %fieldset 
     %legend Lead Activities
-    %p Recent Activity for #{@lead.full_name}
-    %a{"data-target" => ".new-note", "data-toggle" => "collapse", class: 'btn btn-primary'}
-      New Note
+    %h4
+      Recent Activity for #{@lead.full_name}
+      .pull-right
+        %a{"data-target" => ".new-note", "data-toggle" => "collapse", class: 'btn btn-primary', id: 'new-note'}
+          New Note
     .row.new-note.collapse
       .span9.offset2
         = simple_form_for [@lead, Note.new] do |n|
           = n.input :content, as: :text, input_html: {rows: 5, class: "field span9"}
           .span12.offset7
             = n.submit class: 'btn btn-primary'
+    %br
+    - if @lead.notes.present?
+      - @lead.notes.each do |note|
+        .well-white.span10
+          = note.content
+
 
     
 

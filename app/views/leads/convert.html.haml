@@ -1,0 +1,23 @@
+.form.well
+  .label
+    %h2
+      Convert Lead
+  %br
+  .form-horizontal
+    = simple_form_for @lead, :html => { :class => 'form-horizontal' }  do |f|
+      %fieldset
+        %legend Lead Info
+        .row.span10
+          .span4
+            = f.input :first_name
+            = f.input :last_name
+            = f.input :email, as: :email
+            = f.input :phone
+            = f.input :company
+          .span4.offset1
+            = f.input :account_name, collection:(@accounts)
+            = f.input :opportunity_name
+            = f.input :opportunity_owner, collection:(@opportunity_owner)
+
+      .row.pull-right
+        = f.submit 'Convert', class: 'btn btn-primary'  

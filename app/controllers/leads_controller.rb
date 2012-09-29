@@ -35,9 +35,7 @@ class LeadsController < ApplicationController
   def update
     @lead = Lead.find params[:id]
     if params[:commit] == 'Convert'
-      binding.pry
-      @contacts = Contact.all.map(&:email)
-
+      convert_lead
     else  
       if @lead.update_attributes params[:lead]
         redirect_to lead_path @lead, flash[:notice] = 'Lead Updated'
@@ -60,8 +58,25 @@ class LeadsController < ApplicationController
   end
 
   def convert
-    @lead = Lead.find params[:id]
-    @accounts = Account.all.map(&:name)
+    @lead               = Lead.find params[:id]
+    @accounts           = Account.all.map(&:name)
+    @opportunity_owner  = User.all.map(&:email)
   end
 
-end
+  def convert_lead
+    @lead = Lead.find params[:id]
+    @lead.update_attributes params['lead']
+    @account = Account.where(name: params['account_name']).first
+    @contacts = Contact.all.map(&:email)
+    unless @contacts.include? @lead.email
+      @contact = Contact.create params['lead']
+    end
+    @opportunities = Opportunity.all.map(&:opportunity_name)
+    unless @opportunities.include? @lead.opportunity_name
+      @opportunity = Opportunity.create(opportunity_name: @lead.opportunity_name, account_name: @lead.account_name, owner: @lead.opportunity_owner)
+    end
+    flash[:notice] = 'Lead has been converted'
+    redirect_to opportunity_path(@opportunity)
+  end
+
+end  

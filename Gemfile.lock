@@ -59,7 +59,7 @@ GEM
       xpath (~> 0.1.4)
     childprocess (0.3.5)
       ffi (~> 1.0, >= 1.0.6)
-    cocaine (0.3.1)
+    cocaine (0.3.2)
     coderay (1.0.7)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -101,7 +101,7 @@ GEM
       activesupport (>= 3.1, < 4.1)
       haml (~> 3.1)
       railties (>= 3.1, < 4.1)
-    heroku (2.32.5)
+    heroku (2.32.6)
       heroku-api (~> 0.3.5)
       launchy (>= 0.3.2)
       netrc (~> 0.7.7)
@@ -176,6 +176,8 @@ GEM
       pry (~> 0.9.10)
     pry-rails (0.2.2)
       pry (>= 0.9.10)
+    puma (1.6.3)
+      rack (~> 1.2)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -318,6 +320,7 @@ DEPENDENCIES
   pry
   pry-nav
   pry-rails
+  puma
   rails
   rails3-generators
   rspec-rails

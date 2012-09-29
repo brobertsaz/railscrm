@@ -1,3 +1,4 @@
+
 source 'http://rubygems.org'
 
 gem 'rails'
@@ -53,6 +54,7 @@ group :test, :development do
   gem 'email_spec' 
   gem 'pry'
   gem 'pry-nav'
+  gem 'puma'
 
   # Pretty printed test output
   gem 'turn', require: false

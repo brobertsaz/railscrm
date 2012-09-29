@@ -82,9 +82,9 @@ describe "Leads" do
     end
     
     it 'adds a note' do
-      pending 'still working on it'
+      pending 'got to figure out why it will not click link'
       visit lead_path @lead
-      click_link 'New Note'
+      click_on '#new-note'
       fill_in 'lead_note_note_content', with: 'this is a note'
       click_button 'Create Note'
       page.should have_content 'Lead Updated'
@@ -95,10 +95,12 @@ describe "Leads" do
       visit lead_path @lead
       click_link 'Convert Lead'
       select "#{@account.name}", from: 'lead_account_name'
+      fill_in 'Opportunity name', with: 'New Opportunity'
+      select "#{@user.email}", from: 'lead_opportunity_owner'
       count_before = Opportunity.count
       click_button 'Convert'
       Opportunity.count.should == count_before + 1
-      Contact.last.first_name.should == @lead.first_name
+      Opportunity.last.opportunity_name.should == 'New Opportunity'
       page.should have_content 'Lead has been converted'
     end
 
