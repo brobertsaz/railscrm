@@ -9,7 +9,6 @@ There are a lot of features that are not yet implemented and I will add them to 
 
 There is also a live version on Heroku at http://demo.railscrm.com
 
-This is a work in progress, so if you would like to help out or have suggestions, feel free to contact me at bob@rebel-outpost.com 
 
 Mongodb
 =======
@@ -57,7 +56,34 @@ This is the intended workflow:
 The initial setup will require Users to be created.  Once your Organization has Users, it can assign leads, contacts, opportunities and accounts to them.
 
 
+TODO
+====
 
+In addition to the stories in Pivotal Tracker, the following still need to be done:
+
+	1. Create User dashboard
+		1.1 This will include views for user's leads and tasks.  Leads assigned to user needs to be sortable by several fields such as Name, Company, Status, Date Created, etc.  
+		1.2 A sidebar on the dashboard for quick create links for lead, task, contact.	The side bar should also have a search field for searching all all of the categories.
+	2.	Add tagging to Leads and Opportuntites.
+	3.  Create Import/Export process.
+	4.	Create standard reports TBD.
+
+Ultimately, RailsCRM needs to remain easy to set up and to use and not become blaoted like so many other CRM's out there.
+
+
+Contributing
+============
+
+If you make improvements to this application, please share with others.
+
+Send the author a message, create an [issue](https://github.com/brobertsaz/railscrm/issues), or fork the project and submit a pull request.
+
+If you add functionality to this application, create an alternative implementation, or build an application that is similar, please contact me and I’ll add a note to the README so that others can find your work.
+
+This is a work in progress, so if you would like to help out or have suggestions, feel free to contact me at bob@rebel-outpost.com
+
+Licensing
+=========
 
 Copyright &copy; 2012 Bob Roberts <bob@rebel-outpost.com>
 Distributed under the MIT license.
