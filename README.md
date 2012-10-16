@@ -68,7 +68,7 @@ In addition to the stories in Pivotal Tracker, the following still need to be do
 	3.  Create Import/Export process.
 	4.	Create standard reports TBD.
 
-Ultimately, RailsCRM needs to remain easy to set up and to use and not become blaoted like so many other CRM's out there.
+Ultimately, RailsCRM needs to remain easy to set up and to use and not become bloated like so many other CRM's out there.
 
 
 Contributing
