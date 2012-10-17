@@ -79,4 +79,16 @@ class LeadsController < ApplicationController
     redirect_to opportunity_path(@opportunity)
   end
 
+  def new_web_lead
+    leads = Lead.new
+    minus_lead = ["_type","_id","created_at", "updated_at", "lead_source", "lead_status","lead_owner", "account_name","opportunity_name","opportunity_owner","assigned_to_id"]
+    lead = leads.attribute_names.to_a
+    @lead = lead-minus_lead
+  end
+
+  def create_web_lead
+      @lead = params[:lead].split(' ')
+    redirect_to leads_path
+  end
+  
 end  
