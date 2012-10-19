@@ -88,7 +88,5 @@ class LeadsController < ApplicationController
 
   def create_web_lead
       @lead = params[:lead].split(' ')
-    redirect_to leads_path
   end
-  
 end  
