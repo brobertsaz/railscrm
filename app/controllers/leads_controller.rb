@@ -1,4 +1,6 @@
-class LeadsController < ApplicationController  
+class LeadsController < ApplicationController
+  before_filter :authenticate_user!, :except => ['external_form']
+  
   def new
     @lead = Lead.new
     @lead_owner     = User.all.map(&:email)
@@ -87,6 +89,20 @@ class LeadsController < ApplicationController
   end
 
   def create_web_lead
-      @lead = params[:lead].split(' ')
+      @in_lead = []
+      @params = params[:lead].split(' ')
+      @params.each do |param|
+        if params["#{param}"].to_i == 1
+          @in_lead << param
+        end
+      end
+      @redirect_url = params[:redirect_url]
+      render "web_form"
+  end
+
+  def external_form
+    redirect_url = params[:redirect_url]
+    @lead = Lead.new(params[:in_lead])
+    redirect_to redirect_url
   end
 end  
