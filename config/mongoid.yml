@@ -19,4 +19,4 @@ test:
  # mongodb://heroku_app7056684:i49vdi86vsoidg0sn5unrqkf54@ds037387-a.mongolab.com:37387/heroku_app7056684
  
 production:
-  uri:<%= ENV['MONGOLAB_URI']%>
+  uri: <%= ENV['MONGOLAB_URI'] %>
