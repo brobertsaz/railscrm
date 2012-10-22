@@ -1,5 +1,5 @@
 class LeadsController < ApplicationController
-#  before_filter :authenticate_user!, :except => ['external_form']
+  before_filter :authenticate_user!, :except => ['external_form']
   
   def new
     @lead = Lead.new
@@ -89,29 +89,40 @@ class LeadsController < ApplicationController
   end
 
   def create_web_lead
-      @in_lead = []
-      @params = params[:lead].split(' ')
-      @params.each do |param|
-        if params["#{param}"].to_i == 1
-          @in_lead << param
-        end
+    @in_lead = []
+    default_url = "http://demo.railscrm.com" #CHANGE THIS TO A VALID URL
+    default_fields = ["first_name","last_name", "email", "company", "phone"]
+    @params = params[:lead].split(' ')
+    @params.each do |param|
+      if params["#{param}"].to_i == 1
+        @in_lead << param
       end
-      @redirect_url = params[:redirect_url]
-      render "web_form"
+    end
+    @redirect_url = params[:redirect_url]
+    if @in_lead.empty?
+      @in_lead = default_fields
+    end
+    @redirect_url = params[:redirect_url].empty? ? default_url : params[:redirect_url]
+    render "web_form"
   end
 
   def external_form
-    redirect_url = params[:redirect_url]
-    leads = params[:params].split(" ")
-    @lead = Lead.new
-    leads.each do |lead|
-      @lead.update_attribute("#{lead}", params["#{lead}"])
-    end
-    @lead.update_attributes(:lead_owner => params["lead_owner"],
-      :lead_source => "#{request.protocol}#{request.fullpath}")
+    user = User.where(:email => params[:lead_owner]).first
+    requestor = "#{request.protocol}#{request.fullpath}"
+    if user.nil?
+      puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ USER NOT FOUND : #{user.email}"
+    else
+      redirect_url = params[:redirect_url]
+      leads = params[:params].split(" ")
+      @lead = Lead.new
+      leads.each do |lead|
+        @lead.update_attribute("#{lead}", params["#{lead}"])
+      end
+      @lead.update_attributes(:lead_owner => params["lead_owner"],
+        :lead_source => requestor)
 
-     @lead.save
-     redirect_to redirect_url
-    
+      @lead.save
+      redirect_to redirect_url
+    end
   end
 end  
