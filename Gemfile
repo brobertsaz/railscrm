@@ -1,6 +1,7 @@
 
 source 'http://rubygems.org'
 
+gem 'gibberish'
 gem 'rails'
 
 # Gems used only for assets and not required

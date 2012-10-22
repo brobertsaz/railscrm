@@ -102,15 +102,17 @@ class LeadsController < ApplicationController
     if @in_lead.empty?
       @in_lead = default_fields
     end
+    @lead_owner = encrypt(current_user.email)
     @redirect_url = params[:redirect_url].empty? ? default_url : params[:redirect_url]
     render "web_form"
   end
 
   def external_form
-    user = User.where(:email => params[:lead_owner]).first
+    email = decrypt(params[:lead_owner])
+    user = User.where(:email =>email).first
     requestor = "#{request.protocol}#{request.fullpath}"
     if user.nil?
-      puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ USER NOT FOUND : #{user.email}"
+      redirect_to requestor
     else
       redirect_url = params[:redirect_url]
       leads = params[:params].split(" ")
@@ -118,11 +120,18 @@ class LeadsController < ApplicationController
       leads.each do |lead|
         @lead.update_attribute("#{lead}", params["#{lead}"])
       end
-      @lead.update_attributes(:lead_owner => params["lead_owner"],
-        :lead_source => requestor)
-
+      @lead.update_attributes(:lead_owner => email,:lead_source => requestor)
       @lead.save
       redirect_to redirect_url
     end
   end
+
+  private
+    def encrypt(data)
+      return encrypted_data = KEY.enc(data)
+    end
+
+    def decrypt(encrypted_data)
+      return data = KEY.dec(encrypted_data)
+    end
 end  
