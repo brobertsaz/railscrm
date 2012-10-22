@@ -1,6 +1,7 @@
 
 source 'http://rubygems.org'
 
+gem 'gibberish'
 gem 'rails'
 
 # Gems used only for assets and not required
@@ -28,7 +29,8 @@ gem 'stripe'
 
 group :production do
   gem 'thin'
-  ruby '1.9.3'
+ # ruby '1.9.3'
+  gem 'pg'
 end
 
 group :development do

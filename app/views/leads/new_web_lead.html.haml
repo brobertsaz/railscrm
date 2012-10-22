@@ -1,0 +1,32 @@
+.form.well
+  .label
+    %h2
+      New Web Form
+  %br
+  .span12.offset9
+  %br
+  .form-horizontal
+    =form_tag create_lead_path,:class => 'simple_form' do
+      %fieldset
+        %legend Lead Info
+        .row
+          .span4
+            %p
+              Redirect URL
+              =text_field_tag :redirect_url
+            %br
+            -for a in 0..@lead.size/2-1 do
+              =check_box_tag @lead[a]
+              =@lead[a]
+              %br
+          .span4
+            %br
+            %br
+            =hidden_field_tag :lead,@lead
+            -for b in @lead.size/2..@lead.size-1 do
+              =check_box_tag @lead[b]
+              =@lead[b]
+              %br
+        %br
+        = submit_tag "Generate Form", class: 'btn btn-primary'
+        = link_to 'Cancel', leads_path, class: "btn btn-danger"

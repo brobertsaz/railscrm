@@ -8,6 +8,10 @@ RebelFoundation::Application.routes.draw do
     match "signup" => "devise/registrations#new", :as => "signup"
   end
 
+  match "web_to_lead" => "leads#new_web_lead", :as => "web_to_lead"
+  match "create_lead" => "leads#create_web_lead", :as => "create_lead"
+  match "generate" => "leads#external_form"
+  
   resources :organizations
   resources :leads do
     resources :notes

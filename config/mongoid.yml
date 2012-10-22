@@ -19,12 +19,4 @@ test:
  # mongodb://heroku_app7056684:i49vdi86vsoidg0sn5unrqkf54@ds037387-a.mongolab.com:37387/heroku_app7056684
  
 production:
-  sessions:
-    default:
-      database: heroku_app7056684
-      username: heroku_app7056684
-      password: i49vdi86vsoidg0sn5unrqkf54
-      hosts:
-        - ds037387-a.mongolab.com:37387
-      options:
-        consistency: :strong
+  uri: <%= ENV['MONGOLAB_URI'] %>

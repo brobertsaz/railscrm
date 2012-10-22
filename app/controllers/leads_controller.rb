@@ -1,4 +1,6 @@
-class LeadsController < ApplicationController  
+class LeadsController < ApplicationController
+  before_filter :authenticate_user!, :except => ['external_form']
+  
   def new
     @lead = Lead.new
     @lead_owner     = User.all.map(&:email)
@@ -79,4 +81,57 @@ class LeadsController < ApplicationController
     redirect_to opportunity_path(@opportunity)
   end
 
+  def new_web_lead
+    leads = Lead.new
+    minus_lead = ["_type","_id","created_at", "updated_at", "lead_source", "lead_status","lead_owner", "account_name","opportunity_name","opportunity_owner","assigned_to_id"]
+    lead = leads.attribute_names.to_a
+    @lead = lead-minus_lead
+  end
+
+  def create_web_lead
+    @in_lead = []
+    default_url = "http://demo.railscrm.com" #CHANGE THIS TO A VALID URL
+    default_fields = ["first_name","last_name", "email", "company", "phone"]
+    @params = params[:lead].split(' ')
+    @params.each do |param|
+      if params["#{param}"].to_i == 1
+        @in_lead << param
+      end
+    end
+    @redirect_url = params[:redirect_url]
+    if @in_lead.empty?
+      @in_lead = default_fields
+    end
+    @lead_owner = encrypt(current_user.email)
+    @redirect_url = params[:redirect_url].empty? ? default_url : params[:redirect_url]
+    render "web_form"
+  end
+
+  def external_form
+    email = decrypt(params[:lead_owner])
+    user = User.where(:email =>email).first
+    requestor = "#{request.protocol}#{request.fullpath}"
+    if user.nil?
+      redirect_to requestor
+    else
+      redirect_url = params[:redirect_url]
+      leads = params[:params].split(" ")
+      @lead = Lead.new
+      leads.each do |lead|
+        @lead.update_attribute("#{lead}", params["#{lead}"])
+      end
+      @lead.update_attributes(:lead_owner => email,:lead_source => requestor)
+      @lead.save
+      redirect_to redirect_url
+    end
+  end
+
+  private
+    def encrypt(data)
+      return encrypted_data = KEY.enc(data)
+    end
+
+    def decrypt(encrypted_data)
+      return data = KEY.dec(encrypted_data)
+    end
 end  
