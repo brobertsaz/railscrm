@@ -1,5 +1,5 @@
 class LeadsController < ApplicationController
-  before_filter :authenticate_user!, :except => ['external_form']
+#  before_filter :authenticate_user!, :except => ['external_form']
   
   def new
     @lead = Lead.new
@@ -102,10 +102,16 @@ class LeadsController < ApplicationController
 
   def external_form
     redirect_url = params[:redirect_url]
-    puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~REDIRECT URL: #{redirect_url}"
-    @lead = Lead.new(params[:in_lead])
-    @lead.source = params[:source]
-    @lead.
-    redirect_to redirect_url
+    leads = params[:params].split(" ")
+    @lead = Lead.new
+    leads.each do |lead|
+      @lead.update_attribute("#{lead}", params["#{lead}"])
+    end
+    @lead.update_attributes(:lead_owner => params["lead_owner"],
+      :lead_source => "#{request.protocol}#{request.fullpath}")
+
+     @lead.save
+     redirect_to redirect_url
+    
   end
 end  
