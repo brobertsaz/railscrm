@@ -1,0 +1,9 @@
+=form_tag "http://localhost:3000/generate" do
+  =hidden_field_tag :lead_owner, @lead_owner
+  =hidden_field_tag :params, @in_lead
+  =hidden_field_tag :redirect_url, @redirect_url
+  -for a in 0..@in_lead.size-1 do
+    =label_tag @in_lead[a]
+    =text_field_tag @in_lead[a]
+
+  =submit_tag "Generate Form", class: 'btn btn-primary'
