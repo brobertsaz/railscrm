@@ -102,6 +102,7 @@ class LeadsController < ApplicationController
 
   def external_form
     redirect_url = params[:redirect_url]
+    puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~REDIRECT URL: #{redirect_url}"
     @lead = Lead.new(params[:in_lead])
     redirect_to redirect_url
   end
