@@ -1,9 +1,17 @@
-=form_tag "http://localhost:3000/generate" do
+=javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"
+=javascript_include_tag "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"
+=form_tag("http://demo.railscrm.com/generate",name: "web_form", id: "web_form", class: "web_form") do
   =hidden_field_tag :lead_owner, @lead_owner
   =hidden_field_tag :params, @in_lead
   =hidden_field_tag :redirect_url, @redirect_url
   -for a in 0..@in_lead.size-1 do
     =label_tag @in_lead[a]
-    =text_field_tag @in_lead[a]
+    -if @in_lead[a] == 'email'
+      =text_field_tag @in_lead[a], @value, class: "required email"
+    -else
+      =text_field_tag @in_lead[a], @value, class: "required"
+    %br
 
   =submit_tag "Generate Form", class: 'btn btn-primary'
+%script 
+  $("#web_form").validate();

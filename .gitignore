@@ -3,6 +3,7 @@ config/provider_keys.yml
 db/*.sqlite3
 log/*.log
 tmp/
+nbproject/
 .sass-cache/
 *.swp
 .DS_Store
