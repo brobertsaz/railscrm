@@ -102,6 +102,8 @@ class LeadsController < ApplicationController
     if @in_lead.empty?
       @in_lead = default_fields
     end
+    @value=""
+    @required="required"
     @lead_owner = encrypt(current_user.email)
     @redirect_url = params[:redirect_url].empty? ? default_url : params[:redirect_url]
     render "web_form"
@@ -121,8 +123,9 @@ class LeadsController < ApplicationController
         @lead.update_attribute("#{lead}", params["#{lead}"])
       end
       @lead.update_attributes(:lead_owner => email,:lead_source => requestor)
-      @lead.save
-      redirect_to redirect_url
+      if @lead.save!
+        redirect_to redirect_url
+      end
     end
   end
 

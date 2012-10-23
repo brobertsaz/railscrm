@@ -33,5 +33,4 @@ class Lead < Contact
     
   end
   
-  
 end
