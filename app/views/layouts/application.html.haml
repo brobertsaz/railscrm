@@ -15,6 +15,8 @@
           %ul.pull-right
             - if user_signed_in?
               %li
+                = link_to 'Dashboard', :dashboard
+              %li
                 = link_to 'Leads', :leads
               %li
                 = link_to 'Tasks', :tasks

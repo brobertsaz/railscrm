@@ -56,6 +56,16 @@ This is the intended workflow:
 The initial setup will require Users to be created.  Once your Organization has Users, it can assign leads, contacts, opportunities and accounts to them.
 
 
+Web-to-Lead
+===========
+Thanks to Rahul, Rails CRM now has a web-to-lead function.  With this, you can generate a web-to-lead form to put on your website which will create a new lead in Rails CRM when a visitor submits the form.
+
+When you go to Leads and click on Web-to-Lead it brings up the form generator.  
+
+Redirect URL - This is the page that you want to redirect to after the form is submitted.  This is most likely the "Thank You" page.
+
+Form Creation - Select the fields that you want your form to have.  At this time we do not have the ability to add a custom field so WYSIWYG.  After selecting the fields, click "Generate Form" and this will bring you to the generated form code.  Copy and paste this code on your website.
+
 TODO
 ====
 

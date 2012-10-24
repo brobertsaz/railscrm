@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
-
+  before_filter :authenticate_user!
+  
   def new
     @task = Task.new
     @task_due_dates = Task.due_dates

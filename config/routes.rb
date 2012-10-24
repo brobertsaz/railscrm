@@ -6,6 +6,7 @@ RebelFoundation::Application.routes.draw do
     match "logout" => "devise/sessions#destroy", :as => "logout"  
     match "login" => "devise/sessions#new", :as => "login"  
     match "signup" => "devise/registrations#new", :as => "signup"
+    match "dashboard" => "users#dashboard", as: "dashboard"
   end
 
   match "web_to_lead" => "leads#new_web_lead", :as => "web_to_lead"
@@ -23,6 +24,7 @@ RebelFoundation::Application.routes.draw do
     end
   end
   
+
   resources :tasks
   resources :contacts
   resources :accounts

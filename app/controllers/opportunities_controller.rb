@@ -1,5 +1,6 @@
 class OpportunitiesController < ApplicationController
-
+  before_filter :authenticate_user!
+  
 	def new
 		@opportunity 						= Opportunity.new
 		@opportunity_owner  	  = User.all.map(&:email)
