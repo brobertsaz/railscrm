@@ -84,7 +84,7 @@ describe "Leads" do
     it 'adds a note' do
       pending 'got to figure out why it will not click link'
       visit lead_path @lead
-      click_on '#new-note'
+      click_link '.new-note'
       fill_in 'lead_note_note_content', with: 'this is a note'
       click_button 'Create Note'
       page.should have_content 'Lead Updated'
