@@ -1,46 +1,41 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Rails CRM by brobertsaz</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Rails CRM : Ruby on Rails CRM with Mongodb, Twitter Bootstrap and Devise" />
 
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Rails CRM</title>
   </head>
+
   <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/brobertsaz/railscrm">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/brobertsaz/railscrm/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/brobertsaz/railscrm/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
 
-    <div class="wrapper">
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/brobertsaz/railscrm">View on GitHub</a>
 
-      <section>
-        <div id="title">
-          <h1>Rails CRM</h1>
-          <p>Ruby on Rails CRM with Mongodb, Twitter Bootstrap and Devise</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/brobertsaz">brobertsaz</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
-        </div>
+          <h1 id="project_title">Rails CRM</h1>
+          <h2 id="project_tagline">Ruby on Rails CRM with Mongodb, Twitter Bootstrap and Devise</h2>
 
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/brobertsaz/railscrm/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/brobertsaz/railscrm/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
         <h1>Rails CRM</h1>
 
 <p>Rails CRM is an opensource Customer Relations Management application.  Intended to be similiar to Paid CRM's, Rails CRM is going to be the bare bones minimum for a CRM but yet can be cloned and modified however you please.</p>
+
+<p>Github: <a href="http://github.com/brobertsaz/railscrm">http://github.com/brobertsaz/railscrm</a></p>
 
 <p>Rails CRM uses Mongoid and Mongodb, Twitter Bootstrap, Devise for authentication, as well as HAML and SASS.  I prefer to use nosql and Mongodb is our favorite.  I looked at a few other opensource CRM's but did not find any that used mongodb.  Rails CRM became a pet project and was a starting point for one of RebelHolds interns Rick Carlino.</p>
 
@@ -130,9 +125,16 @@
 Distributed under the MIT license.
 <a href="http://www.opensource.org/licenses/mit-license.php">http://www.opensource.org/licenses/mit-license.php</a></p>
       </section>
-
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Rails CRM maintained by <a href="https://github.com/brobertsaz">brobertsaz</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -143,6 +145,7 @@ Distributed under the MIT license.
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
+
 
   </body>
 </html>
