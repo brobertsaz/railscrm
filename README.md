@@ -15,14 +15,14 @@ Mongodb
 
 Rails CRM uses Mongodb for its database.  You will need to have it installed to use Rails CRM.  To install mongocrm, checkout the Mongodb installation information at: 
 	
-	http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/
+		http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/
 
 RVM
 ===
 
 Rails CRM has a .rvmrc file for specifying the Ruby version.  If you are not using RVM you should.  RVM can be installed at the command line using:
 
-	curl -L https://get.rvm.io | bash -s stable --ruby
+		curl -L https://get.rvm.io | bash -s stable --ruby
 
 
 Install

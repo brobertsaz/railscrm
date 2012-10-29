@@ -8,7 +8,7 @@ describe "Users" do
   end
 
   it 'has user dashboard' do
-    page.should have_content "Welcome to your dashboard"
+    page.should have_content "Welcome to your Dashboard"
   end
 
 end
