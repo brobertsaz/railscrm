@@ -29,7 +29,7 @@ a:hover{color:#fff;text-decoration:underline;}
 .row:after{clear:both;}
 [class*="span"]{float:left;margin-left:20px;}
 .container,.navbar-fixed-top .container,.navbar-fixed-bottom .container{width:940px;}
-.span12{width:940px;}
+.span12{width:980px;}
 .span11{width:860px;}
 .span10{width:780px;}
 .span9{width:700px;}

@@ -1,8 +1,38 @@
 .row
   .span3.well
-    %h1
-      Sidebar Information
+    %h3
+      Quick Links
+    %hr
+    %ul.sidebar
+      %li
+        = link_to 'Create New Lead', new_lead_path
+      %li
+        = link_to 'Create New Task', new_task_path
+      %li
+        = link_to 'Create New Contact', new_contact_path
+      %li
+        = link_to 'Create New Account', new_account_path
+      %li
+        = link_to 'Create New Opportunity', new_opportunity_path
 
   .span7.well
-    %h1
-      Welcome to your dashboard
+    %h2
+      Welcome to your Dashboard
+    %hr
+    %h4
+      Leads assigned to you:
+    %table.table.table-striped
+      %thead
+        %tr
+          %th
+            Name
+          %th
+            Company
+          %th
+            Status
+          %th
+            Created Date
+          %th
+            Actions
+      %tbody
+          
