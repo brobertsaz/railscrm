@@ -49,7 +49,7 @@ describe "User Dashboard" do
   it 'shows leads assigned' do
     page.should have_content @lead.full_name
     page.should have_content @lead.company
-    page.should have_content @lead.status
+    page.should have_content @lead.lead_status.to_s.capitalize
     page.should have_content @lead.created_at.to_date
   end
 

@@ -32,7 +32,15 @@
             Status
           %th
             Created Date
-          %th
-            Actions
       %tbody
+        - @leads.each do |lead|
+          %tr
+            %td
+              = lead.full_name
+            %td
+              = lead.company
+            %td
+              = lead.lead_status.to_s.capitalize
+            %td
+              = lead.created_at.to_date
           
