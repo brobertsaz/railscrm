@@ -81,10 +81,9 @@ describe "Leads" do
       page.should_not have_content 'Bill Gates'
     end
     
-    it 'adds a note' do
-      pending 'got to figure out why it will not click link'
+    it 'adds a note', js: true do
       visit lead_path @lead
-      click_link '.new-note'
+      click_button 'New Note'
       fill_in 'lead_note_note_content', with: 'this is a note'
       click_button 'Create Note'
       page.should have_content 'Lead Updated'
@@ -103,10 +102,27 @@ describe "Leads" do
       Opportunity.last.opportunity_name.should == 'New Opportunity'
       page.should have_content 'Lead has been converted'
     end
-
-
-    
-          
   end
+
+  context 'web-to-lead' do
+    it 'creates web-to-lead form' do
+      click_link 'Web-to-Lead Form'
+      fill_in 'redirect_url',   with: '/index.html'
+      check 'First Name'
+      check 'Last Name'
+      check 'Company'
+      check 'Email'
+      check 'Phone'
+      check 'Address'
+      check 'City'
+      check 'State'
+      check 'Zip'
+      check 'Interested In'
+      check 'Comments'
+      click_button 'Create Form'
+      page.should have_content 'Copy the form below and use it anywhere in your website.'
+    end
+  end
+
   
 end

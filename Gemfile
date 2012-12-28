@@ -26,6 +26,7 @@ gem 'devise'
 gem 'bcrypt-ruby'
 gem 'airbrake'
 gem 'stripe'
+gem "select2-rails"
 
 group :production do
   gem 'thin'

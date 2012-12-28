@@ -7,7 +7,7 @@
   %p
     The Web-to-Lead form generator is used to create the form code that can be used on your website as a way to create leads from visitors.
   %p
-    The Redirect URL is the page that you want to redirect to after the form is submitted. Select the fields that you want your form to have and click "Generate Form".
+    The Redirect URL is the page that you want to redirect to after the form is submitted. Select the fields that you want your form to have and click "Create Form".
   %br
   .form-horizontal
     =form_tag create_lead_path,:class => 'simple_form' do
@@ -20,17 +20,17 @@
               =text_field_tag :redirect_url
             %br
             -for a in 0..@lead.size/2-1 do
-              =check_box_tag @lead[a]
-              =@lead[a]
+              =check_box_tag @lead[a].titleize
+              =@lead[a].titleize
               %br
           .span4
             %br
             %br
             =hidden_field_tag :lead,@lead
             -for b in @lead.size/2..@lead.size-1 do
-              =check_box_tag @lead[b]
-              =@lead[b]
+              =check_box_tag @lead[b].titleize
+              =@lead[b].titleize
               %br
         %br
-        = submit_tag "Generate Form", class: 'btn btn-primary'
+        = submit_tag "Create Form", class: 'btn btn-primary'
         = link_to 'Cancel', leads_path, class: "btn btn-danger"

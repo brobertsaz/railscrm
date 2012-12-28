@@ -1,0 +1,28 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js" type="text/javascript"></script>
+<form accept-charset="UTF-8" action="http://demo.railscrm.com/generate" class="web_form" id="web_form" method="post" name="web_form"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓" /><input name="authenticity_token" type="hidden" value="3El0HvY9Y/ZhsLWBuZo9ScanYwZWEVHgfdawH/PpmZI=" /></div>
+  <input id="lead_owner" name="lead_owner" type="hidden" value="U2FsdGVkX19QvVXgHKAiLUCJH3HRXFWJaAT5E6oxFbXbw2FCUqzs0ckNpXg8
+  EZgF
+  " />
+  <input id="params" name="params" type="hidden" value="first_name last_name company email phone" />
+  <input id="redirect_url" name="redirect_url" type="hidden" value="thankyou" />
+  <label for="first_name">First name</label>
+  <input class="required" id="first_name" name="first_name" type="text" value="" />
+  <br>
+  <label for="last_name">Last name</label>
+  <input class="required" id="last_name" name="last_name" type="text" value="" />
+  <br>
+  <label for="company">Company</label>
+  <input class="required" id="company" name="company" type="text" value="" />
+  <br>
+  <label for="email">Email</label>
+  <input class="required email" id="email" name="email" type="text" value="" />
+  <br>
+  <label for="phone">Phone</label>
+  <input class="required" id="phone" name="phone" type="text" value="" />
+  <br>
+  <input class="btn btn-primary" name="commit" type="submit" value="Generate Form" />
+</form>
+<script>
+  $("#web_form").validate();
+</script>

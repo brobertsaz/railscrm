@@ -13,10 +13,10 @@
             = f.input :company
             = f.input :comments, as: :text, :input_html => {rows: 5}
           .span4.offset1
-            = f.input :lead_owner,      collection:(@lead_owner)
-            = f.input :interested_in,   collection:(@lead_interests)
-            = f.input :lead_status,     collection:(@lead_status)
-            = f.input :lead_source,     collection:(@lead_sources)
+            = f.input :lead_owner,      collection:(@lead_owner)#, input_html: {class: 'chosen-select'}
+            = f.input :interested_in,   collection:(@lead_interests)#, input_html: {class: 'chosen-select'}
+            = f.input :lead_status,     collection:(@lead_status)#, input_html: {class: 'chosen-select'}
+            = f.input :lead_source,     collection:(@lead_sources)#, input_html: {class: 'chosen-select'}
 
 
       %fieldset

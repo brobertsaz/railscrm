@@ -14,36 +14,40 @@ describe "User Dashboard" do
   end
 
   it 'has quick links' do
-    page.should have_content 'Create New Lead'
-    page.should have_content 'Create New Task'
-    page.should have_content 'Create New Contact'
-    page.should have_content 'Create New Account'
-    page.should have_content 'Create New Opportunity'
+    page.should have_content 'New Lead'
+    page.should have_content 'New Task'
+    page.should have_content 'New Contact'
+    page.should have_content 'New Account'
+    page.should have_content 'New Opportunity'
   end
 
   it 'links to new lead' do
-    click_link 'Create New Lead'
+    click_link 'New Lead'
     page.should have_content 'Lead Info'
   end
 
   it 'links to new task' do
-    click_link 'Create New Task'
+    click_link 'New Task'
     page.should have_content 'Task name'
   end
 
   it 'links to new contact' do
-    click_link 'Create New Contact'
+    click_link 'New Contact'
     page.should have_content 'First name'
   end
   
   it 'links to new account' do
-    click_link 'Create New Account'
+    click_link 'New Account'
     page.should have_content 'Name'
   end 
 
   it 'links to new opportunity' do
-    click_link 'Create New Opportunity'
+    click_link 'New Opportunity'
     page.should have_content 'Opportunity name'
+  end
+
+  it 'has additional settings'do
+    page.should have_content 'Settings'
   end
 
   it 'shows leads assigned' do
@@ -53,7 +57,11 @@ describe "User Dashboard" do
     page.should have_content @lead.created_at.to_date
   end
 
-  it 'shows tasks assigned'
-
+  it 'shows tasks assigned' do
+    page.should have_content @task.task_name.titleize
+    page.should have_content @task.due_date
+    page.should have_content @task.task_type.titleize
+    page.should have_content @task.lead_for_task.titleize
+  end
 
 end

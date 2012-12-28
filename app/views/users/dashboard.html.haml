@@ -1,26 +1,34 @@
 .row
-  .span3.well
-    %h3
+  .span2.well
+    %h4
       Quick Links
     %hr
     %ul.sidebar
       %li
-        = link_to 'Create New Lead', new_lead_path
+        = link_to 'New Lead', new_lead_path
       %li
-        = link_to 'Create New Task', new_task_path
+        = link_to 'New Task', new_task_path
       %li
-        = link_to 'Create New Contact', new_contact_path
+        = link_to 'New Contact', new_contact_path
       %li
-        = link_to 'Create New Account', new_account_path
+        = link_to 'New Account', new_account_path
       %li
-        = link_to 'Create New Opportunity', new_opportunity_path
+        = link_to 'New Opportunity', new_opportunity_path
+    %br
+    %br
+    %h4
+      Settings
+    %hr
+    %ul.sidebar
+      %li
+        = link_to 'Web-to-Lead Form', web_to_lead_path
 
-  .span7.well
+  .span8.well
     %h2
       Welcome to your Dashboard
     %hr
     %h4
-      Leads assigned to you:
+      Leads assigned:
     %table.table.table-striped
       %thead
         %tr
@@ -36,11 +44,38 @@
         - @leads.each do |lead|
           %tr
             %td
-              = lead.full_name
+              = link_to lead.full_name.titleize, lead_path(lead)
             %td
               = lead.company
             %td
               = lead.lead_status.to_s.capitalize
             %td
               = lead.created_at.to_date
+    %br
+    %hr
+    %h4
+      Tasks assigned:
+    %table.table.table-striped
+      %thead
+        %tr
+          %th
+            Name
+          %th
+            Due Date
+          %th
+            Task Type
+          %th
+            Lead
+      %tbody
+        - @tasks.sort_by(&:due_date).each do |task|
+          %tr
+            %td
+              = link_to task.task_name.titleize, task_path(task)
+            %td
+              = task.due_date
+            %td
+              = task.task_type.titleize
+            %td
+              = task.lead_for_task
+
           
