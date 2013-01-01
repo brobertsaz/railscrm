@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/brobertsaz/capybara-select2
+  revision: fbeb41faf102e3c690ab051971d7d04716f97ad0
+  specs:
+    capybara-select2 (0.0.3)
+      capybara
+      rspec
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -304,6 +312,7 @@ DEPENDENCIES
   capistrano
   capistrano_colors
   capybara
+  capybara-select2!
   coffee-rails
   database_cleaner
   devise

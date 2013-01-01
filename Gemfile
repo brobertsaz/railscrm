@@ -58,6 +58,7 @@ group :test, :development do
   gem 'pry'
   gem 'pry-nav'
   gem 'puma'
+  gem 'capybara-select2', git: 'https://github.com/brobertsaz/capybara-select2'
 
   # Pretty printed test output
   gem 'turn', require: false

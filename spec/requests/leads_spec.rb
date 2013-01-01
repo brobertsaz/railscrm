@@ -18,12 +18,14 @@ describe "Leads" do
     fill_in 'lead_phone',       with: '8005551212'
     fill_in 'lead_email',       with: 'bill@ms.com'
     fill_in 'lead_company',     with: 'Microsoft'
-    select 'Web Application',   from: 'lead_interested_in'
     fill_in 'lead_comments',    with: 'Needs ASAP'
-    select 'New',               from: 'lead_lead_status'
-    select 'Web Lead',          from: 'lead_lead_source'
-    select "#{@user2.email}",   from: 'lead_lead_owner'
+    select2 "#{@user2.email}",  from: 'Lead owner'
+    select2 'Web Application',  from: 'Interested in'
+    select2 'New',              from: 'Lead status'
+    select2 'Web Lead',         from: 'Lead source'
+    sleep 1
     click_button 'Create Lead'
+    Lead.last.last_name.should == 'Gates'
     page.should have_content 'New Lead Created'
   end
   
@@ -35,10 +37,11 @@ describe "Leads" do
       @account = FactoryGirl.create :account    
     end
     
-    it 'should edit a lead' do
+    it 'should edit a lead', js: true do
       visit lead_path @lead
       fill_in 'lead_company', with: 'XYZ'
-      select 'Contacted', from: 'lead_lead_status'
+      select2 'Contacted', from: 'Lead status'
+      sleep 2
       click_button 'Update'
       page.should have_content 'Lead Updated'
     end
@@ -55,18 +58,20 @@ describe "Leads" do
       #page.should have_content Date.today.to_s
     end
     
-    it 'assigns lead to user' do
+    it 'assigns lead to user', js: true do
       visit lead_path @lead
-      select "#{@user2.email}", from: 'lead_lead_owner'
+      select2 "#{@user2.email}", from: 'Lead owner'
+      sleep 2
       click_button 'Update'
       page.should have_content 'Lead Updated'
       visit leads_path
       page.should have_content @user2.email
     end
     
-    it 'reassigns lead' do 
+    it 'reassigns lead', js: true do 
       visit lead_path @lead
-      select "#{@user.email}", from: 'lead_lead_owner'
+      select2 "#{@user.email}", from: 'Lead owner'
+      sleep 2
       click_button 'Update'
       page.should have_content 'Lead Updated'
       visit leads_path
@@ -93,10 +98,11 @@ describe "Leads" do
     it 'converts a lead', js: true do
       visit lead_path @lead
       click_link 'Convert Lead'
-      select "#{@account.name}", from: 'lead_account_name'
+      select2 "#{@account.name}", from: 'Account name'
       fill_in 'Opportunity name', with: 'New Opportunity'
-      select "#{@user.email}", from: 'lead_opportunity_owner'
+      select2 "#{@user.email}", from: 'Opportunity owner'
       count_before = Opportunity.count
+      sleep 2
       click_button 'Convert'
       Opportunity.count.should == count_before + 1
       Opportunity.last.opportunity_name.should == 'New Opportunity'

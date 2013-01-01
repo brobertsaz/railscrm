@@ -9,41 +9,42 @@ describe 'Tasks' do
     login_as @user
   end
 
-  it 'creates a new task' do
+  it 'creates a new task', js: true do
     click_link 'Tasks'
     click_link 'Create Task'
+    fill_in 'task_due_date',        with: '09/11/2012'
+    select2 "#{@user2.email}",       from: 'Assigned to'
+    select2 'Call',                  from: 'Task type'
+    select2 "#{@lead.email}",        from: 'For Lead'
     fill_in "task_task_name",       with: 'test task'
-    fill_in 'task_due_date',        with: '09/11/2012'
-    select "#{@user2.email}",       from: 'task_assigned_to'
-    select 'Call',                  from: 'task_task_type'
-    select "#{@lead.email}",        from: 'task_lead_for_task'
     click_button 'Create Task'
-    page.should have_content 'Task Created'
     Task.count.should == 1
+    page.should have_content 'New Task Created'
   end
     
-  it 'has required fields' do
+  it 'has required fields', js: true do
     click_link 'Tasks'
     click_link 'Create Task'
     fill_in 'task_due_date',        with: '09/11/2012'
-    select "#{@user2.email}",       from: 'task_assigned_to'
-    select 'Call',                  from: 'task_task_type'
-    select "#{@lead.email}",        from: 'task_lead_for_task'
+    select2 "#{@user2.email}",       from: 'Assigned to'
+    select2 'Call',                  from: 'Task type'
+    select2 "#{@lead.email}",        from: 'For Lead'
     click_button 'Create Task'
-    page.should have_content "can't be blank"
-    page.should_not have_content 'Task Updated'
     Task.count.should == 0
+    page.should_not have_content 'Task Updated'
   end
     
-  it 'notifies the user they have been assigned to a task' do
+  it 'notifies the user they have been assigned to a task', js: true do
     click_link 'Tasks'
     click_link 'Create Task'
     fill_in "task_task_name",       with: 'another test task'
     fill_in 'task_due_date',        with: '09/11/2012'
-    select "#{@user2.email}",       from: 'task_assigned_to'
-    select 'Call',                  from: 'task_task_type'
-    select "#{@lead.email}",        from: 'task_lead_for_task'
+    select2 "#{@user2.email}",       from: 'Assigned to'
+    select2 'Call',                  from: 'Task type'
+    select2 "#{@lead.email}",        from: 'For Lead'
+    sleep 2
     click_button 'Create Task'
+    page.should have_content 'New Task Created'
     ActionMailer::Base.deliveries.each.count.should == 2
     ActionMailer::Base.deliveries[0].to.should include @user2.email
     ActionMailer::Base.deliveries[0].body.should include 'call' && @lead.email
@@ -54,14 +55,15 @@ describe 'Tasks' do
       @task = FactoryGirl.create :task, lead_for_task: @lead.first_name
     end
 
-    it 'edits task' do
+    it 'edits task', js: true do
       click_link 'Tasks'
       click_link "Edit"
       fill_in "task_task_name",         with: 'test task 2 updated'
       fill_in 'task_due_date',          with: '09/11/2012'
-      select "#{@user2.email}",         from: 'task_assigned_to'
-      select 'Email',                   from: 'task_task_type'
-      select "#{@lead.email}",          from: 'task_lead_for_task'
+      select2 "#{@user2.email}",         from: 'Assigned to'
+      select2 'Email',                   from: 'Task type'
+      select2 "#{@lead.email}",          from: 'For Lead'
+      sleep 2
       click_button 'Update Task'
       page.should have_content 'Task Updated'
       @task.reload
@@ -69,16 +71,16 @@ describe 'Tasks' do
     end
 
 
-    it 'notifies the user their task has changed' do
+    it 'notifies the user their task has changed', js: true do
       click_link 'Tasks'
       click_link "Edit"
       fill_in "task_task_name",         with: 'test task 2 updated'
       fill_in 'task_due_date',          with: '09/11/2012'
-      select "#{@user2.email}",         from: 'task_assigned_to'
-      select 'Email',                   from: 'task_task_type'
-      select "#{@lead.email}",          from: 'task_lead_for_task'
+      select2 "#{@user2.email}",         from: 'Assigned to'
+      select2 'Email',                   from: 'Task type'
+      select2 "#{@lead.email}",          from: 'For Lead'
+      sleep 2
       click_button 'Update Task'
-
       ActionMailer::Base.deliveries.last.to.should include @user2.email
       ActionMailer::Base.deliveries.last.body.should include 'test task 2 updated' && @lead.email
     end
