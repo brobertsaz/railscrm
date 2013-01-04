@@ -71,12 +71,9 @@ TODO
 
 In addition to the stories in Pivotal Tracker, the following still need to be done:
 
-	1. Create User dashboard
-		1.1 This will include views for user's leads and tasks.  Leads assigned to user needs to be sortable by several fields such as Name, Company, Status, Date Created, etc.  
-		1.2 A sidebar on the dashboard for quick create links for lead, task, contact.	The side bar should also have a search field for searching all all of the categories.
-	2.	Add tagging to Leads and Opportuntites.
-	3.  Create Import/Export process.
-	4.	Create standard reports TBD.
+	1.	Add tagging to Leads and Opportuntites.
+	2.  Create Import/Export process.
+	3.	Create standard reports TBD.
 
 Ultimately, RailsCRM needs to remain easy to set up and to use and not become bloated like so many other CRM's out there.
 

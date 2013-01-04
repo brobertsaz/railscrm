@@ -57,7 +57,7 @@ RebelFoundation::Application.configure do
     password: "railsmongocrm"
   } 
 
-  config.action_mailer.default_url_options = { :host => 'rebelcrm.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'mongocrm.herokuapp.com' }
   
 
   # Enable threaded mode
