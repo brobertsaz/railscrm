@@ -13,6 +13,7 @@ class LeadsController < ApplicationController
     @lead = Lead.new params[:lead]
     @lead.update_attributes(assigned_to: @lead.lead_owner)
     if @lead.save
+      LeadMailer.notify_new_lead(@lead.lead_owner, @lead).deliver
       redirect_to lead_path @lead, flash[:notice] = 'New Lead Created'
     else
       render :new
@@ -40,6 +41,7 @@ class LeadsController < ApplicationController
       convert_lead
     else  
       if @lead.update_attributes params[:lead]
+        LeadMailer.notify_updated_lead(@lead.lead_owner, @lead).deliver
         redirect_to lead_path @lead, flash[:notice] = 'Lead Updated'
       else
         render :edit
@@ -92,12 +94,13 @@ class LeadsController < ApplicationController
     @in_lead = []
     default_url = "http://demo.railscrm.com" #CHANGE THIS TO A VALID URL
     default_fields = ["first_name","last_name", "email", "company", "phone"]
-    @params = params[:lead].split(' ')
-    @params.each do |param|
-      if params["#{param}"].to_i == 1
-        @in_lead << param
-      end
-    end
+    # @params = params[:lead].split(' ')
+    # @params.each do |param|
+    #   if params["#{param}"].to_i == 1
+    #     @in_lead << param
+    #   end
+    # end
+    binding.pry
     @redirect_url = params[:redirect_url]
     if @in_lead.empty?
       @in_lead = default_fields

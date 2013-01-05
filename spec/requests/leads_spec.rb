@@ -28,6 +28,27 @@ describe "Leads" do
     Lead.last.last_name.should == 'Gates'
     page.should have_content 'New Lead Created'
   end
+
+  it 'notifies new lead create', js: true do
+    click_link 'Leads'
+    click_link 'Create Lead'
+    
+    fill_in 'lead_first_name',  with: 'Bill'
+    fill_in 'lead_last_name',   with: 'Gates'
+    fill_in 'lead_phone',       with: '8005551212'
+    fill_in 'lead_email',       with: 'bill2@ms.com'
+    fill_in 'lead_company',     with: 'Microsoft'
+    fill_in 'lead_comments',    with: 'Needs ASAP'
+    select2 "#{@user2.email}",  from: 'Lead owner'
+    select2 'Web Application',  from: 'Interested in'
+    select2 'New',              from: 'Lead status'
+    select2 'Web Lead',         from: 'Lead source'
+    sleep 1
+    click_button 'Create Lead'
+    ActionMailer::Base.deliveries.each.count.should == 1
+    ActionMailer::Base.deliveries[0].to.should include @user2.email
+    ActionMailer::Base.deliveries[0].body.should include 'new lead'
+  end
   
   context 'with created lead' do
   

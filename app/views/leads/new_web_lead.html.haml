@@ -14,21 +14,19 @@
       %fieldset
         %legend Lead Info
         .row
-          .span4
+          .span9
             %p
               Redirect URL
               =text_field_tag :redirect_url
             %br
+        .row
+          .span4
             -for a in 0..@lead.size/2-1 do
-              =check_box_tag @lead[a].titleize
+              =check_box_tag @lead[a]
               =@lead[a].titleize
               %br
-          .span4
-            %br
-            %br
-            =hidden_field_tag :lead,@lead
             -for b in @lead.size/2..@lead.size-1 do
-              =check_box_tag @lead[b].titleize
+              =check_box_tag @lead[b]
               =@lead[b].titleize
               %br
         %br
