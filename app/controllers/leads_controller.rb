@@ -100,7 +100,6 @@ class LeadsController < ApplicationController
     #     @in_lead << param
     #   end
     # end
-    binding.pry
     @redirect_url = params[:redirect_url]
     if @in_lead.empty?
       @in_lead = default_fields

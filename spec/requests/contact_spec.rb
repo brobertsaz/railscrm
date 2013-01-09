@@ -50,7 +50,9 @@ describe 'Contact requests' do
 
     it 'edits contact' do 
       click_link 'Contacts'
-      click_link 'Edit'
+      within '.table-striped' do
+        click_link 'Edit'
+      end
       fill_in "contact_first_name", with: 'John'
       click_button 'Update Contact'
       page.should_not have_content "can't be blank"

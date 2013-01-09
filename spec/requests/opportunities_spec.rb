@@ -35,7 +35,9 @@ describe "Opportunities" do
 
     it 'edits opportunity' do
       click_link 'Opportunities'
-      click_link 'Edit'
+      within '.table-striped' do
+        click_link 'Edit'
+      end
 
       fill_in 'opportunity_opportunity_name',   with: 'New Deal Name'
       fill_in 'opportunity_amount',             with: '20,000'

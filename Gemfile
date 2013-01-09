@@ -2,7 +2,7 @@
 source 'http://rubygems.org'
 
 gem 'gibberish'
-gem 'rails'
+gem 'rails', '3.2.11'
 
 # Gems used only for assets and not required
 # in production environments by default.

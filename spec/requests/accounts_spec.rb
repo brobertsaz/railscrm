@@ -8,7 +8,7 @@ describe 'Accounts' do
   end
 
   it 'creates a new account' do
-    click_link 'Account'
+    click_link 'Accounts'
     click_link 'Create Account'
     fill_in 'account_name',       with: 'Potato Factory'
     fill_in 'account_phone',      with: '555-1212'
@@ -21,7 +21,7 @@ describe 'Accounts' do
   end
     
   it 'has required fields' do
-    click_link 'Account'
+    click_link 'Accounts'
     click_link 'Create Account'
     fill_in 'account_name',       with: 'Potato Factory'
     fill_in 'account_website',    with: 'www.spud.com'
@@ -46,7 +46,9 @@ describe 'Accounts' do
 
     it 'edits account' do
       click_link 'Accounts'
-      click_link 'Edit'
+      within '.table-striped' do
+        click_link 'Edit'
+      end
       fill_in 'account_name', with: 'Potato Factory'
       click_button 'Update Account'
       page.should have_content 'Account Updated'

@@ -45,7 +45,6 @@ describe "Leads" do
     select2 'Web Lead',         from: 'Lead source'
     sleep 1
     click_button 'Create Lead'
-    ActionMailer::Base.deliveries.each.count.should == 1
     ActionMailer::Base.deliveries[0].to.should include @user2.email
     ActionMailer::Base.deliveries[0].body.should include 'new lead'
   end
@@ -102,7 +101,7 @@ describe "Leads" do
     it 'deletes a lead' do
       visit leads_path
       page.should have_content 'Bill Gates'
-      click_link 'Delete'
+      first(:link, 'Delete').click
       page.should have_content 'Lead Deleted'
       page.should_not have_content 'Bill Gates'
     end
@@ -135,17 +134,17 @@ describe "Leads" do
     it 'creates web-to-lead form' do
       click_link 'Web-to-Lead Form'
       fill_in 'redirect_url',   with: '/index.html'
-      check 'First Name'
-      check 'Last Name'
-      check 'Company'
-      check 'Email'
-      check 'Phone'
-      check 'Address'
-      check 'City'
-      check 'State'
-      check 'Zip'
-      check 'Interested In'
-      check 'Comments'
+      check 'first_name'
+      check 'last_name'
+      check 'company'
+      check 'email'
+      check 'phone'
+      check 'address'
+      check 'city'
+      check 'state'
+      check 'zip'
+      check 'interested_in'
+      check 'comments'
       click_button 'Create Form'
       page.should have_content 'Copy the form below and use it anywhere in your website.'
     end
