@@ -71,9 +71,9 @@ TODO
 
 In addition to the stories in Pivotal Tracker, the following still need to be done:
 
-	1.	Add tagging to Leads and Opportuntites.
-	2.  Create Import/Export process.
-	3.	Create standard reports TBD.
+- [ ]	Add tagging to Leads and Opportuntites.
+- [ ] Create Import/Export process.
+- [ ]	Create standard reports TBD.
 
 Ultimately, RailsCRM needs to remain easy to set up and to use and not become bloated like so many other CRM's out there.
 

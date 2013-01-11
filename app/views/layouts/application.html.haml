@@ -47,4 +47,28 @@
             = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) 
 
     .container
-      = yield
+      .span2.well
+        %h4
+          Quick Links
+        %hr
+        %ul.sidebar
+          %li
+            = link_to 'New Lead', new_lead_path
+          %li
+            = link_to 'New Task', new_task_path
+          %li
+            = link_to 'New Contact', new_contact_path
+          %li
+            = link_to 'New Account', new_account_path
+          %li
+            = link_to 'New Opportunity', new_opportunity_path
+        %br
+        %br
+        %h4
+          Settings
+        %hr
+        %ul.sidebar
+          %li
+            = link_to 'Web-to-Lead Form', web_to_lead_path
+      .span8
+        = yield
