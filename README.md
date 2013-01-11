@@ -1,4 +1,4 @@
-Rails CRM
+**Rails CRM**
 ===============
 
 Rails CRM is an opensource Customer Relations Management application.  Intended to be similiar to Paid CRM's, Rails CRM is going to be the bare bones minimum for a CRM but yet can be cloned and modified however you please.
@@ -66,14 +66,18 @@ Redirect URL - This is the page that you want to redirect to after the form is s
 
 Form Creation - Select the fields that you want your form to have.  At this time we do not have the ability to add a custom field so WYSIWYG.  After selecting the fields, click "Generate Form" and this will bring you to the generated form code.  Copy and paste this code on your website.
 
+**UPDATE:  The Form creation process is not working correctly and is under repair**
+
 TODO
 ====
 
 In addition to the stories in Pivotal Tracker, the following still need to be done:
 
-- [ ]	Add tagging to Leads and Opportuntites.
-- [ ] Create Import/Export process.
-- [ ]	Create standard reports TBD.
+- Create links to show views
+- Add email function to leads/contacts etc (click to email)
+-	Add tagging to Leads and Opportuntites.
+- Create Import/Export process.
+- Create standard reports TBD.
 
 Ultimately, RailsCRM needs to remain easy to set up and to use and not become bloated like so many other CRM's out there.
 
