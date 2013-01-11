@@ -28,18 +28,18 @@ a:hover{color:#fff;text-decoration:underline;}
 .row{margin-left:-20px;*zoom:1;}.row:before,.row:after{display:table;content:"";}
 .row:after{clear:both;}
 [class*="span"]{float:left;margin-left:20px;}
-.container,.navbar-fixed-top .container,.navbar-fixed-bottom .container{width:940px;}
+.container,.navbar-fixed-top .container,.navbar-fixed-bottom .container{width: 80%;}
 .span12{width:980px;}
 .span11{width:860px;}
 .span10{width:780px;}
 .span9{width:700px;}
-.span8{width:620px;}
+.span8{width:70%;}
 .span7{width:540px;}
 .span6{width:460px;}
 .span5{width:380px;}
 .span4{width:300px;}
 .span3{width:220px;}
-.span2{width:140px;}
+.span2{width:2)%;}
 .span1{width:60px;}
 .offset12{margin-left:980px;}
 .offset11{margin-left:900px;}
