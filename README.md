@@ -37,6 +37,14 @@ Install
 Start rails server and go to localhost:3000 and you will see the Rails CRM login page.  Just create a user and you are up and running.
 
 
+Approval Process
+================
+
+As the default, all users are automatically approved upon registration.  To change this just edit line 12 of the user model:
+
+	  field :approved, :type => Boolean, :default => true ## change to false
+
+
 Work Flow
 =========
 
