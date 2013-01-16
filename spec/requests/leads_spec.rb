@@ -143,7 +143,6 @@ describe "Leads" do
       check 'city'
       check 'state'
       check 'zip'
-      check 'interested_in'
       check 'comments'
       click_button 'Create Form'
       page.should have_content 'Copy the form below and use it anywhere in your website.'

@@ -43,7 +43,7 @@
                 = link_to 'Register', new_user_registration_path
 
     - if flash.present?
-      %section.container-fluid
+      %section
         - flash.each do |name, msg|
           %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
             / %a.close{"data-dismiss" => "alert"} &#215;

@@ -8,7 +8,7 @@
           = f.input :email
           = f.input :assigned_to, collection: (User.all.map(&:first_name).prepend('None'))
           = f.input :website
-        .span4.offset1
+        .span4
           = f.input :phone
           = f.input :address
       .row.pull-right

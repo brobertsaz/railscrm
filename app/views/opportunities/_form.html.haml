@@ -10,7 +10,7 @@
           = f.input :amount
           = f.input :stage,         collection:(@opportunity_stage)
           = f.input :owner,         collection:(@opportunity_owner)
-        .span4.offset1
+        .span4
           = f.input :closing_date, :as => :string, :input_html => { :class => 'jquery-ui-date'} 
           = f.input :probability
           = f.input :contact_name

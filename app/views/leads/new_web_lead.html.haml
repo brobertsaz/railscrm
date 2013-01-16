@@ -21,14 +21,11 @@
             %br
         .row
           .span4
-            -for a in 0..@lead.size/2-1 do
+            -for a in 0..@lead.size - 1 do
               =check_box_tag @lead[a]
               =@lead[a].titleize
               %br
-            -for b in @lead.size/2..@lead.size-1 do
-              =check_box_tag @lead[b]
-              =@lead[b].titleize
-              %br
+
         %br
         = submit_tag "Create Form", class: 'btn btn-primary'
         = link_to 'Cancel', leads_path, class: "btn btn-danger"

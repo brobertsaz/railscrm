@@ -74,7 +74,6 @@ Redirect URL - This is the page that you want to redirect to after the form is s
 
 Form Creation - Select the fields that you want your form to have.  At this time we do not have the ability to add a custom field so WYSIWYG.  After selecting the fields, click "Generate Form" and this will bring you to the generated form code.  Copy and paste this code on your website.
 
-**UPDATE:  The Form creation process is not working correctly and is under repair**
 
 TODO
 ====

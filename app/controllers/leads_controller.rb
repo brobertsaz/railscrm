@@ -85,7 +85,7 @@ class LeadsController < ApplicationController
 
   def new_web_lead
     leads = Lead.new
-    minus_lead = ["_type","_id","created_at", "updated_at", "lead_source", "lead_status","lead_owner", "account_name","opportunity_name","opportunity_owner","assigned_to_id"]
+    minus_lead = ["_type","_id","created_at", "updated_at", "lead_source", "lead_status","lead_owner", "account_name","opportunity_name","opportunity_owner","assigned_to_id", "interested_in"]
     lead = leads.attribute_names.to_a
     @lead = lead-minus_lead
   end
@@ -93,16 +93,11 @@ class LeadsController < ApplicationController
   def create_web_lead
     @in_lead = []
     default_url = "http://demo.railscrm.com" #CHANGE THIS TO A VALID URL
-    default_fields = ["first_name","last_name", "email", "company", "phone"]
-    # @params = params[:lead].split(' ')
-    # @params.each do |param|
-    #   if params["#{param}"].to_i == 1
-    #     @in_lead << param
-    #   end
-    # end
-    @redirect_url = params[:redirect_url]
-    if @in_lead.empty?
-      @in_lead = default_fields
+    fields = ["first_name","last_name", "email", "company", "phone", "address", "city", "state", "zip", "comments"]
+    fields.each do |field|
+      if params["#{field}"].present?
+        @in_lead << field
+      end
     end
     @value=""
     @required="required"
@@ -126,6 +121,7 @@ class LeadsController < ApplicationController
       end
       @lead.update_attributes(:lead_owner => email,:lead_source => requestor)
       if @lead.save!
+        LeadMailer.notify_web_form_lead(@lead.lead_owner, @lead).deliver
         redirect_to redirect_url
       end
     end

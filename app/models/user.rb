@@ -9,7 +9,7 @@ class User
   ## Database authenticatable
   field :email,              :type => String,  :default => ""
   field :encrypted_password, :type => String,  :default => ""
-  field :approved,           :type => Boolean, :default => false
+  field :approved,           :type => Boolean, :default => true
   field :admin,              :type => Boolean, :default => false
 
   validates_presence_of :email

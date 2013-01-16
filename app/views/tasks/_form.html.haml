@@ -7,7 +7,7 @@
           = f.input :task_name
           = f.input :due_date, :as => :string, :input_html => { :class => 'jquery-ui-date'} 
           = f.input :assigned_to, collection: (@task_owners)
-        .span4.offset1
+        .span4
           = f.input :task_type, collection: (@task_types)
           = f.input :lead_for_task, collection: (@leads), label: 'For Lead'
       .row.pull-right
