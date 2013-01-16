@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Opportunities" do
 
   before do
-    @user     = FactoryGirl.create :user
+    @user     = FactoryGirl.create :approved_user
     @account  = FactoryGirl.create :account
     login_as @user
   end

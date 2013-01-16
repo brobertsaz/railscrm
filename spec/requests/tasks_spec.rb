@@ -3,8 +3,8 @@ require 'spec_helper'
 describe 'Tasks' do
 
   before do
-    @user   = FactoryGirl.create :user
-    @user2  = FactoryGirl.create :user, email: 'test2@example.com', first_name: 'Jim'
+    @user   = FactoryGirl.create :approved_user
+    @user2  = FactoryGirl.create :approved_user, email: 'test2@example.com', first_name: 'Jim'
     @lead   = FactoryGirl.create :lead, email: 'test@test.com', first_name: 'Jenny', last_name: 'Smith'
     login_as @user
   end

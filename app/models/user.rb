@@ -7,8 +7,10 @@ class User
          :recoverable, :rememberable, :trackable, :validatable
 
   ## Database authenticatable
-  field :email,              :type => String, :default => ""
-  field :encrypted_password, :type => String, :default => ""
+  field :email,              :type => String,  :default => ""
+  field :encrypted_password, :type => String,  :default => ""
+  field :approved,           :type => Boolean, :default => false
+  field :admin,              :type => Boolean, :default => false
 
   validates_presence_of :email
   validates_uniqueness_of :email
@@ -39,6 +41,17 @@ class User
     self.first_name + " " + self.last_name
   end
 
+  def active_for_authentication? 
+    super && approved? 
+  end 
+
+  def inactive_message 
+    if !approved? 
+      :not_approved 
+    else 
+      super # Use whatever other message
+    end 
+  end
 
   ## Confirmable
   # field :confirmation_token,   :type => String

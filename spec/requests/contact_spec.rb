@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'Contact requests' do
 
   before do
-    @user   = FactoryGirl.create :user
+    @user   = FactoryGirl.create :approved_user
     login_as @user
   end
 

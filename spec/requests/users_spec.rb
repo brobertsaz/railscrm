@@ -1,9 +1,52 @@
 require 'spec_helper'
 
+describe 'User Registration' do
+
+  it 'registers user' do
+    visit root_path
+    click_link 'Register'
+    fill_in 'First name',            with: 'Test'
+    fill_in 'Last name',             with: 'User'
+    fill_in 'Email',                 with: 'register_test@example.com'
+    fill_in 'Password',              with: 'password'
+    fill_in 'Password confirmation', with: 'password'
+    click_button 'Sign up'
+    page.should have_content 'You have signed up successfully but your account has not been approved by your administrator yet'
+  end
+
+  before do
+    @user = FactoryGirl.create :user
+    @admin = FactoryGirl.create :admin_user
+  end  
+
+  it 'requires approval' do
+    visit root_path
+    click_link 'Login'
+    fill_in 'Email',     with: @user.email
+    fill_in 'Password',  with: 'password'
+    click_button 'Sign in'
+    page.should have_content 'Your account has not been approved by your administrator yet.'
+    page.should_not have_content 'Welcome to your Dashboard'
+  end
+
+  it 'approves user' do
+    login_as @admin
+    click_link 'Admin'
+    within '.pending-users' do
+      page.should have_content "#{@user.email}"
+    end
+    click_link 'Approve'
+    page.should have_content 'User has successfully been appproved'
+    ActionMailer::Base.deliveries.last.to.should include @user.email
+    ActionMailer::Base.deliveries.last.body.should include 'You have been approved'
+  end
+
+end  
+
 describe "User Dashboard" do
 
   before do
-    @user   = FactoryGirl.create :user
+    @user   = FactoryGirl.create :approved_user
     @lead   = FactoryGirl.create :lead, first_name: 'Bill', last_name: 'Gates', phone: '8885551212', interested_in: 'ios', lead_status: 'new', lead_source: 'web', lead_owner: @user.email
     @task = FactoryGirl.create :task, lead_for_task: @lead.first_name, assigned_to: @user.email
     login_as @user

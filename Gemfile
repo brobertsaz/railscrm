@@ -45,7 +45,7 @@ end
 group :test, :development do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
-  gem 'capybara'
+  gem 'capybara', '1.1.4'
   gem 'launchy'
   gem 'database_cleaner'
   gem 'mongoid-rspec'

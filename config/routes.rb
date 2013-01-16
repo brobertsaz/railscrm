@@ -3,10 +3,11 @@ RebelFoundation::Application.routes.draw do
   devise_for :users
 
   devise_scope :user do
-    match "logout" => "devise/sessions#destroy", :as => "logout"  
-    match "login" => "devise/sessions#new", :as => "login"  
-    match "signup" => "devise/registrations#new", :as => "signup"
+    match "logout" => "devise/sessions#destroy", as: "logout"  
+    match "login" => "devise/sessions#new", as: "login"  
+    match "signup" => "devise/registrations#new", as: "signup"
     match "dashboard" => "users#dashboard", as: "dashboard"
+    match "admin"=> "users#index", as: "admin"
   end
 
   match "web_to_lead" => "leads#new_web_lead", :as => "web_to_lead"
@@ -21,6 +22,12 @@ RebelFoundation::Application.routes.draw do
   resources :leads do
     member do
       get :convert
+    end
+  end
+
+  resources :users do
+    member do
+      get :approve
     end
   end
   

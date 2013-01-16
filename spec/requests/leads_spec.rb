@@ -3,8 +3,8 @@ require 'spec_helper'
 describe "Leads" do
 
   before do
-    @user   = FactoryGirl.create :user
-    @user2  = FactoryGirl.create :user, email: 'test2@example.com', first_name: 'Jim Jones'
+    @user   = FactoryGirl.create :approved_user
+    @user2  = FactoryGirl.create :approved_user, email: 'test2@example.com', first_name: 'Jim Jones'
     login_as @user
   end
   
@@ -101,7 +101,7 @@ describe "Leads" do
     it 'deletes a lead' do
       visit leads_path
       page.should have_content 'Bill Gates'
-      first(:link, 'Delete').click
+      click_link 'Delete'
       page.should have_content 'Lead Deleted'
       page.should_not have_content 'Bill Gates'
     end

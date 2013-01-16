@@ -16,7 +16,7 @@
         %a.brand{:href => root_path, :name => "top"} Rails CRM
         .nav-collapse.collapse
           %ul.nav.pull-right
-            - if user_signed_in?
+            - if current_user.present?
               %li
                 = link_to 'Dashboard', :dashboard
               %li
@@ -31,6 +31,9 @@
                 = link_to 'Opportunities', :opportunities
               %li
                 = link_to 'Edit profile', edit_user_registration_path
+              - if current_user.present? && current_user.admin
+                %li
+                  = link_to 'Admin', :admin
               %li
                 = link_to 'Logout', destroy_user_session_path, method: :delete
             - else
@@ -47,28 +50,29 @@
             = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) 
 
     .container
-      .span2.well
-        %h4
-          Quick Links
-        %hr
-        %ul.sidebar
-          %li
-            = link_to 'New Lead', new_lead_path
-          %li
-            = link_to 'New Task', new_task_path
-          %li
-            = link_to 'New Contact', new_contact_path
-          %li
-            = link_to 'New Account', new_account_path
-          %li
-            = link_to 'New Opportunity', new_opportunity_path
-        %br
-        %br
-        %h4
-          Settings
-        %hr
-        %ul.sidebar
-          %li
-            = link_to 'Web-to-Lead Form', web_to_lead_path
+      - if current_user.present? && current_user.approved
+        .span2.well
+          %h4
+            Quick Links
+          %hr
+          %ul.sidebar
+            %li
+              = link_to 'New Lead', new_lead_path
+            %li
+              = link_to 'New Task', new_task_path
+            %li
+              = link_to 'New Contact', new_contact_path
+            %li
+              = link_to 'New Account', new_account_path
+            %li
+              = link_to 'New Opportunity', new_opportunity_path
+          %br
+          %br
+          %h4
+            Settings
+          %hr
+          %ul.sidebar
+            %li
+              = link_to 'Web-to-Lead Form', web_to_lead_path
       .span8
         = yield

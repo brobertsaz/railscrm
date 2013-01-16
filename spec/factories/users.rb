@@ -1,12 +1,26 @@
-# Read about factories at http://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
-  factory :user do
-    first_name             'Test'
-    last_name			   'User'
-    email                  'test@example.com' 
-    phone				   '8005551212'
-    password               'password'
-    password_confirmation  'password'
+  sequence :email do |n|
+    "user#{n}@example.com"
   end
+
+  factory :user do
+    first_name            'Test'
+    last_name             'User'
+    phone                 '1231231234'
+    email
+    password              'password'
+    password_confirmation 'password'
+
+
+    factory :admin_user do
+      approved true
+      admin true
+    end
+
+    factory :approved_user do
+      approved true
+    end
+    
+  end
+
 end

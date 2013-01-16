@@ -17,4 +17,5 @@ private
     redirect_to new_user_path unless session[:user_id]
     set_current_user
   end
+
 end

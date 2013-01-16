@@ -1,0 +1,51 @@
+.well
+  %table.table.table-striped.pending-users
+    %h3
+      Pending Users
+    %thead
+      %tr
+        %th
+          Email
+        %th
+          Name
+        %th
+          Approved
+        %th
+          Actions
+    %tbody
+      - @pending_users.each do |user|
+        %tr
+          %td
+            = user.email
+          %td
+            = user.full_name
+          %td
+            = user.approved
+          %td
+            = link_to "Approve", approve_user_path(user), class: 'btn btn-mini btn-primary'
+
+.well
+  %table.table.table-striped.approved-users
+    %h3
+      Approved Users
+    %thead
+      %tr
+        %th
+          Email
+        %th
+          Name
+        %th
+          Approved
+        %th
+          Actions
+    %tbody
+      - @approved_users.each do |user|
+        %tr
+          %td
+            = user.email
+          %td
+            = user.full_name
+          %td
+            = user.approved
+          %td
+            = link_to "Approve", approve_user_path(user), class: 'btn btn-mini btn-primary'
