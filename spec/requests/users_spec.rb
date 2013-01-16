@@ -41,7 +41,17 @@ describe 'User Registration' do
     ActionMailer::Base.deliveries.last.body.should include 'You have been approved'
   end
 
-end  
+  it 'deletes pending user', js: true do
+    login_as @admin
+    click_link 'Admin'
+    within '.pending-users' do
+      click_link 'Delete'
+    end
+    page.driver.browser.switch_to.alert.accept
+    page.should have_content 'User has successfully been deleted'    
+  end
+
+end   
 
 describe "User Dashboard" do
 

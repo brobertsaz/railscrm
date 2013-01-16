@@ -23,6 +23,7 @@
             = user.approved
           %td
             = link_to "Approve", approve_user_path(user), class: 'btn btn-mini btn-primary'
+            = link_to "Delete", user, confirm: "Are you sure you want to delete: #{user.email} ?", method: :delete, class: 'btn btn-mini btn-danger'
 
 .well
   %table.table.table-striped.approved-users
@@ -48,4 +49,4 @@
           %td
             = user.approved
           %td
-            = link_to "Approve", approve_user_path(user), class: 'btn btn-mini btn-primary'
+            = link_to "Delete", user, confirm: "Are you sure you want to delete: #{user.email} ?", method: :delete, class: 'btn btn-mini btn-primary'
