@@ -7,5 +7,5 @@ nbproject/
 .sass-cache/
 *.swp
 .DS_Store
-coverage/
-config/application.yml
+coverage
+
