@@ -7,8 +7,8 @@ class UsersController < ApplicationController
   end
 
   def index
-    @approved_users = User.where(approved: true)
-    @pending_users = User.where(approved: false)
+    @approved_users = User.all.select {|user| user.approved}
+    @pending_users = User.all.reject {|user| user.approved}
   end
 
   def approve
