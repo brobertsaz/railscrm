@@ -11,7 +11,7 @@ There is also a live version on Heroku at http://demo.railscrm.com
 
 
 Mongodb
-=======
+========
 
 Rails CRM uses Mongodb for its database.  You will need to have it installed to use Rails CRM.  To install mongocrm, checkout the Mongodb installation information at: 
 	
