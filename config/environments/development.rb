@@ -36,8 +36,8 @@ RebelFoundation::Application.configure do
     domain: "gmail.com",
     authentication: :login,
     enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"]
+    user_name: 'railscrm',
+    password: 'railsmongocrm'
   }
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
