@@ -31,11 +31,9 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h1>Rails CRM</h1>
+        <h1><strong>Rails CRM</strong></h1>
 
 <p>Rails CRM is an opensource Customer Relations Management application.  Intended to be similiar to Paid CRM's, Rails CRM is going to be the bare bones minimum for a CRM but yet can be cloned and modified however you please.</p>
-
-<p>Github: <a href="http://github.com/brobertsaz/railscrm">http://github.com/brobertsaz/railscrm</a></p>
 
 <p>Rails CRM uses Mongoid and Mongodb, Twitter Bootstrap, Devise for authentication, as well as HAML and SASS.  I prefer to use nosql and Mongodb is our favorite.  I looked at a few other opensource CRM's but did not find any that used mongodb.  Rails CRM became a pet project and was a starting point for one of RebelHolds interns Rick Carlino.</p>
 
@@ -47,14 +45,14 @@
 
 <p>Rails CRM uses Mongodb for its database.  You will need to have it installed to use Rails CRM.  To install mongocrm, checkout the Mongodb installation information at: </p>
 
-<pre><code>http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/
+<pre><code>    http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/
 </code></pre>
 
 <h1>RVM</h1>
 
 <p>Rails CRM has a .rvmrc file for specifying the Ruby version.  If you are not using RVM you should.  RVM can be installed at the command line using:</p>
 
-<pre><code>curl -L https://get.rvm.io | bash -s stable --ruby
+<pre><code>    curl -L https://get.rvm.io | bash -s stable --ruby
 </code></pre>
 
 <h1>Install</h1>
@@ -67,6 +65,13 @@
 </code></pre>
 
 <p>Start rails server and go to localhost:3000 and you will see the Rails CRM login page.  Just create a user and you are up and running.</p>
+
+<h1>Approval Process</h1>
+
+<p>As the default, all users are automatically approved upon registration.  To change this just edit line 12 of the user model:</p>
+
+<pre><code>  field :approved, :type =&gt; Boolean, :default =&gt; true ## change to false
+</code></pre>
 
 <h1>Work Flow</h1>
 
@@ -99,15 +104,13 @@
 
 <p>In addition to the stories in Pivotal Tracker, the following still need to be done:</p>
 
-<pre><code>1. Create User dashboard
-    1.1 This will include views for user's leads and tasks.  Leads assigned to user needs to be sortable by several fields such as Name, Company, Status, Date Created, etc.  
-    1.2 A sidebar on the dashboard for quick create links for lead, task, contact.  The side bar should also have a search field for searching all all of the categories.
-2.  Add tagging to Leads and Opportuntites.
-3.  Create Import/Export process.
-4.  Create standard reports TBD.
-</code></pre>
-
-<p>Ultimately, RailsCRM needs to remain easy to set up and to use and not become bloated like so many other CRM's out there.</p>
+<ul>
+<li>Create links to show views</li>
+<li>Add email function to leads/contacts etc (click to email)</li>
+<li>  Add tagging to Leads and Opportuntites.</li>
+<li>Create Import/Export process.</li>
+<li>Create standard reports TBD.</li>
+</ul><p>Ultimately, RailsCRM needs to remain easy to set up and to use and not become bloated like so many other CRM's out there.</p>
 
 <h1>Contributing</h1>
 
