@@ -5,9 +5,7 @@ Rails CRM is an opensource Customer Relations Management application.  Intended 
 
 Rails CRM uses Mongoid and Mongodb, Twitter Bootstrap, Devise for authentication, as well as HAML and SASS.  I prefer to use nosql and Mongodb is our favorite.  I looked at a few other opensource CRM's but did not find any that used mongodb.  Rails CRM became a pet project and was a starting point for one of RebelHolds interns Rick Carlino.
 
-There are a lot of features that are not yet implemented and I will add them to the Pivotal Tracker https://www.pivotaltracker.com/projects/503421.
-
-There is also a live version on Heroku at http://demo.railscrm.com
+There is a live version on Heroku at http://demo.railscrm.com
 
 
 Mongodb
