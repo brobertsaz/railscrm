@@ -1,5 +1,5 @@
 **Rails CRM**
-===============
+=============
 
 Rails CRM is an opensource Customer Relations Management application.  Intended to be similiar to Paid CRM's, Rails CRM is going to be the bare bones minimum for a CRM but yet can be cloned and modified however you please.
 
@@ -85,6 +85,7 @@ In addition to the stories in Pivotal Tracker, the following still need to be do
 -	Add tagging to Leads and Opportuntites.
 - Create Import/Export process.
 - Create standard reports TBD.
+- Make the web-to-lead use the application URL
 
 Ultimately, RailsCRM needs to remain easy to set up and to use and not become bloated like so many other CRM's out there.
 
