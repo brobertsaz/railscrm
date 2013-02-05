@@ -1,5 +1,5 @@
 **Rails CRM**
-=============
+==============
 
 Rails CRM is an opensource Customer Relations Management application.  Intended to be similiar to Paid CRM's, Rails CRM is going to be the bare bones minimum for a CRM but yet can be cloned and modified however you please.
 
